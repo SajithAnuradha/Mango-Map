@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'setting.dart';
 
 void main() {
   runApp(const MongoMap());
@@ -95,6 +96,17 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Settings',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const Setting(title: 'Settings and activity')),
+                );
+              },
+              child: const Text('Go to Setting Page'),
             ),
           ],
         ),
