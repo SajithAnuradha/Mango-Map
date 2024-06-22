@@ -1,0 +1,97 @@
+# Node.js related
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+
+# dotenv environment variable files
+.env
+.env.test
+.env.production
+
+# Log files
+*.log
+
+# Compiled source
+*.out
+*.class
+*.pyc
+
+# Backup files
+*.swp
+*.bak
+*.tmp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.history
+.atom/
+
+# IntelliJ related
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# SVN
+.svn/
+
+# Build directories
+/build/
+dist/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
