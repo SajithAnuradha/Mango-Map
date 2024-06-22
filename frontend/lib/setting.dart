@@ -40,6 +40,7 @@ class _SettingState extends State<Setting> {
                   ListTile(
                     leading: Icon(Icons.person_outlined),
                     title: Text('Your personal details, security'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                 ],
               ),
@@ -55,22 +56,27 @@ class _SettingState extends State<Setting> {
                   ListTile(
                     leading: Icon(Icons.saved_search_rounded),
                     title: Text('Saved'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                   ListTile(
                     leading: Icon(Icons.place_outlined),
                     title: Text('Your Places'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                   ListTile(
                     leading: Icon(Icons.notifications_outlined),
                     title: Text('Notifications'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                   ListTile(
                     leading: Icon(Icons.reviews_outlined),
                     title: Text('Your Reviews'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                   ListTile(
                     leading: Icon(Icons.payment),
                     title: Text('Payments'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                 ],
               ),
@@ -86,10 +92,12 @@ class _SettingState extends State<Setting> {
                   ListTile(
                     leading: Icon(Icons.account_box_outlined),
                     title: Text('Account Type'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                   ListTile(
                     leading: Icon(Icons.verified_outlined),
                     title: Text('Verified'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
                 ],
               ),
