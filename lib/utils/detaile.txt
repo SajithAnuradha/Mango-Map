@@ -1,0 +1,3 @@
+all static colors,constants,images and styles
+import images-images
+all the styles-styles
