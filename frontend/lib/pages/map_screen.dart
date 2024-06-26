@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
+import 'trending_screen.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -75,12 +76,16 @@ class _MapScreenState extends State<MapScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.search),
+                    icon: Icon(Icons.search, color: Colors.blue),
                     onPressed: _searchLocation,
                   ),
                   IconButton(
                     icon: Icon(Icons.local_fire_department, color: Colors.red),
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TrendingScreen()),
+                      );
                     },
                   ),
                 ],

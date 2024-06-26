@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/map_screen.dart';
+import '../pages/trending_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,5 +16,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
