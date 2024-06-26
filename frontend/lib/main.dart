@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'setting.dart';
+import 'pages/Others/setting.dart';
 
 void main() {
   runApp(const MongoMap());
