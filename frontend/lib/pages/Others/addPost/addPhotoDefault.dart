@@ -84,7 +84,15 @@ class _AddphotodefaultState extends State<Addphotodefault> {
                 ],
               ),
             ),
-            Container(
+            const SizedBox(height: 20),
+            const Text(
+              'Recent Searches',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
               height: 100,
               child: ListView.builder(
                 itemCount: 3,
