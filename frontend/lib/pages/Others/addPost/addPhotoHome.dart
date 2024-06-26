@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'addPhotoQR.dart';
+import 'addPhotoDefault.dart';
 
 class Addphotohome extends StatefulWidget {
   const Addphotohome({super.key});
@@ -85,6 +86,11 @@ class _AddphotohomeState extends State<Addphotohome> {
                         icon: const Icon(Icons.photo_camera,
                             color: Colors.purple),
                         onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const Addphotodefault(),
+                            ),
+                          );
                           _togglePopupMenu();
                         },
                       ),
