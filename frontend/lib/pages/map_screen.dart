@@ -31,37 +31,60 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Mango Map Search'),
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                hintText: 'Enter a location',
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: _searchLocation,
-                ),
-              ),
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _initialPosition,
+              zoom: 10.0,
             ),
-          ),
-          Expanded(
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _initialPosition,
-                zoom: 10.0,
+            markers: {
+              Marker(
+                markerId: MarkerId('searchLocation'),
+                position: _searchPosition,
               ),
-              markers: {
-                Marker(
-                  markerId: MarkerId('searchLocation'),
-                  position: _searchPosition,
-                ),
-              },
+            },
+          ),
+          Positioned(
+            top: 40.0,
+            left: 15.0,
+            right: 15.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10.0,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter a location',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: _searchLocation,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.local_fire_department, color: Colors.red),
+                    onPressed: () {
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],
