@@ -29,13 +29,24 @@ class TrendingLocations extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      'Trending',
-                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.blue,),
-                    ),
-                    Icon(
-                      Icons.local_fire_department,
-                      color: Colors.blue,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Trending',
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          Icon(
+                            Icons.local_fire_department,
+                            color: Colors.blue,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -46,14 +57,13 @@ class TrendingLocations extends StatelessWidget {
               ],
             ),
           ),
-           Divider(
+          Divider(
             color: Colors.blue,
-            thickness: 3.0, 
+            thickness: 3.0,
           ),
-
           Expanded(
             child: ListView.builder(
-            padding: EdgeInsets.only(top: 2.0),
+              padding: EdgeInsets.only(top: 2.0),
               itemCount: 8,
               itemBuilder: (context, index) {
                 return Card(
