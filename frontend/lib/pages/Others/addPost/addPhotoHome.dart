@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'addPhotoQR.dart';
 
 class Addphotohome extends StatefulWidget {
   const Addphotohome({super.key});
@@ -28,6 +29,10 @@ class _AddphotohomeState extends State<Addphotohome> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Photo'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -65,6 +70,11 @@ class _AddphotohomeState extends State<Addphotohome> {
                         icon: const Icon(Icons.qr_code_scanner,
                             color: Colors.purple),
                         onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const Addphotoqr(),
+                            ),
+                          );
                           _togglePopupMenu();
                         },
                       ),
