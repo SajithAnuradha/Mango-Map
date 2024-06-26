@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'setting.dart';
+import 'pages/Others/others.dart';
 
 void main() {
   runApp(const MongoMap());
@@ -92,9 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
+          // Another page to navigate button
           children: <Widget>[
             Text(
-              'Settings',
+              "Your Page",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             ElevatedButton(
@@ -103,10 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const Setting(title: 'Settings and activity')),
+                          const Others()),
                 );
               },
-              child: const Text('Go to Setting Page'),
+              child: const Text('Go to Your Page'),
             ),
           ],
         ),
@@ -114,3 +115,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
