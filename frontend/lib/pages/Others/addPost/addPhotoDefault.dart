@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+// import '../../../widgets/features/pickImage.dart';
+import 'dart:io';
 
 class Addphotodefault extends StatefulWidget {
   const Addphotodefault({super.key});
@@ -10,6 +13,19 @@ class Addphotodefault extends StatefulWidget {
 class _AddphotodefaultState extends State<Addphotodefault> {
   int _rating = 0;
   final TextEditingController _visitController = TextEditingController();
+  File? _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedImage != null) {
+        _image = File(pickedImage.path);
+      } else {
+        print("No Image is Picked");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +46,42 @@ class _AddphotodefaultState extends State<Addphotodefault> {
               'Create post',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            Container(
-              width: double.infinity,
-              height: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Positioned(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Select photo'),
+            _image == null
+                ? SizedBox(
+                    width: double.infinity,
+                    height: 150,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Positioned(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              getImage();
+                            },
+                            child: const Text('Select photo'),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        TextButton(
+                          onPressed: () {
+                            // TODO: Implement image browsing logic
+                          },
+                          child: const Text('Browser'),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    width: double.infinity,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: FileImage(_image!),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('Browser'),
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 20),
             const SizedBox(height: 20),
             const Text(

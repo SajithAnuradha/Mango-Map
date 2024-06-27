@@ -30,7 +30,7 @@ class _AddphotoqrState extends State<Addphotoqr> {
               'Create post',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 250,
               child: Column(
