@@ -14,97 +14,66 @@ class _SettingState extends State<Setting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: const Align(
-        alignment: Alignment.topLeft,
-        child: Column(
-          children: <Widget>[
-            // Card(
-            //   elevation: 5.0,
-            //   child: TextField(
-            //     decoration: InputDecoration(
-            //       hintText: 'Search',
-            //       prefixIcon: Icon(Icons.search),
-            //     ),
-            //   ),
-            // ),
-            Card(
-              elevation: 5.0,
-              child: Column(
+        alignment: Alignment.centerLeft,
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SearchCard(),
+              SectionCard(
+                title: 'Your Account',
                 children: [
-                  Text(
-                    'Your Account',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.person_outlined),
-                    title: Text('Your personal details, security'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.person_outlined,
+                    text: 'Your personal details, security',
                   ),
                 ],
               ),
-            ),
-            Card(
-              elevation: 5.0,
-              child: Column(
+              SectionCard(
+                title: 'How to use Mango Map',
                 children: [
-                  Text(
-                    'How to use Mango Map',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  SettingListTile(
+                    icon: Icons.saved_search_rounded,
+                    text: 'Saved',
                   ),
-                  ListTile(
-                    leading: Icon(Icons.saved_search_rounded),
-                    title: Text('Saved'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.place_outlined,
+                    text: 'Your Places',
                   ),
-                  ListTile(
-                    leading: Icon(Icons.place_outlined),
-                    title: Text('Your Places'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.notifications_outlined,
+                    text: 'Notifications',
                   ),
-                  ListTile(
-                    leading: Icon(Icons.notifications_outlined),
-                    title: Text('Notifications'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.reviews_outlined,
+                    text: 'Your Reviews',
                   ),
-                  ListTile(
-                    leading: Icon(Icons.reviews_outlined),
-                    title: Text('Your Reviews'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.payment),
-                    title: Text('Payments'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.payment,
+                    text: 'Payments',
                   ),
                 ],
               ),
-            ),
-            Card(
-              elevation: 5.0,
-              child: Column(
+              SectionCard(
+                title: 'For Professionals',
                 children: [
-                  Text(
-                    'For Professionals',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  SettingListTile(
+                    icon: Icons.account_box_outlined,
+                    text: 'Account Type',
                   ),
-                  ListTile(
-                    leading: Icon(Icons.account_box_outlined),
-                    title: Text('Account Type'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.verified_outlined),
-                    title: Text('Verified'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  SettingListTile(
+                    icon: Icons.verified_outlined,
+                    text: 'Verified',
                   ),
                 ],
               ),
-            ),
-            Card(
-              elevation: 5.0,
-              child: Column(
+              SectionCard(
+                title: '',
                 children: [
                   ListTile(
                     title: Text('Log in'),
@@ -117,10 +86,76 @@ class _SettingState extends State<Setting> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class SearchCard extends StatelessWidget {
+  const SearchCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      elevation: 5.0,
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search',
+          prefixIcon: Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+}
+
+class SectionCard extends StatelessWidget {
+  const SectionCard({Key? key, required this.title, required this.children})
+      : super(key: key);
+
+  final String title;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (title.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ...children,
+        ],
+      ),
+    );
+  }
+}
+
+class SettingListTile extends StatelessWidget {
+  const SettingListTile({Key? key, required this.icon, required this.text})
+      : super(key: key);
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
+      trailing: const Icon(Icons.arrow_forward_ios_rounded),
     );
   }
 }
