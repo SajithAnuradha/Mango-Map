@@ -1,62 +1,147 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class UserSignUp extends StatelessWidget {
+class UserSignUp extends StatefulWidget {
+  const UserSignUp({Key? key}) : super(key: key);
+
+  @override
+  State<UserSignUp> createState() => _UserSignUp();
+}
+
+class _UserSignUp extends State<UserSignUp> {
+  final _emailController = TextEditingController();
+  String? _emailError;
+  String? _storedEmail;
+  final _userNameController = TextEditingController();
+  String? _userNameError;
+  String? _storedUserName;
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  String? _passwordError;
+  String? _confirmPasswordError;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _userNameController.dispose();
+    super.dispose();
+  }
+
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    return emailRegex.hasMatch(email);
+  }
+
+  bool _isPasswordValid(String password) {
+    return password.isNotEmpty; // Add any additional validation logic if needed
+  }
+
+  bool _doPasswordsMatch(String password, String confirmPassword) {
+    return password == confirmPassword;
+  }
+
+  bool _isUserNameValid(String name) {
+    return name.isNotEmpty;
+  }
+
+  void _submit() {
+    setState(() {
+      if (_isValidEmail(_emailController.text)) {
+        _emailError = null;
+        _storedEmail = _emailController.text;
+        // Handle successful email validation (e.g., store the email or navigate to another screen)
+      } else {
+        _emailError = 'Please enter a valid email';
+        _storedEmail = null;
+      }
+
+      final password = _passwordController.text;
+      final confirmPassword = _confirmPasswordController.text;
+
+      if (_isPasswordValid(password) &&
+          _doPasswordsMatch(password, confirmPassword)) {
+        _passwordError = null;
+        _confirmPasswordError = null;
+        // Handle successful password validation and matching (e.g., proceed to next step)
+      } else {
+        if (!_isPasswordValid(password)) {
+          _passwordError = 'Please enter a valid password';
+        } else {
+          _passwordError = null;
+        }
+
+        if (!_doPasswordsMatch(password, confirmPassword)) {
+          _confirmPasswordError = 'Passwords do not match';
+        } else {
+          _confirmPasswordError = null;
+        }
+      }
+
+      if (_isUserNameValid(_userNameController.text)) {
+        _userNameError = null;
+        _storedUserName = _userNameController.text;
+      } else {
+        _userNameError = "Please enter a valid user name";
+        _storedUserName = null;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     double topPadding = screenHeight * 0.05;
+
     return Padding(
         padding: EdgeInsets.only(top: topPadding), // Top padding of 20 pixels
         child: Column(
           children: [
+            TextField(
+              controller: _userNameController,
+              decoration: InputDecoration(
+                  labelText: 'User name', errorText: _userNameError),
+            ),
             SizedBox(
-              child: TextField(
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                ),
+              height: 20,
+            ),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                errorText: _emailError,
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                errorText: _passwordError,
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            SizedBox(
-              child: TextField(
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Confirm Password',
-                ),
+            TextField(
+              controller: _confirmPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
+                errorText: _confirmPasswordError,
               ),
             ),
             SizedBox(
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _submit(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 padding: EdgeInsets.symmetric(horizontal: 60, vertical: 1),
@@ -79,7 +164,14 @@ class UserSignUp extends StatelessWidget {
                 Expanded(child: Divider()),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("or"),
+                  child: Text(
+                    "or",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16.0,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
                 ),
                 Expanded(child: Divider()),
               ],
@@ -88,7 +180,10 @@ class UserSignUp extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Sign in with",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16.0,
+                ),
               ),
             ),
             Row(
@@ -121,21 +216,54 @@ class UserSignUp extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Text.rich(
-              TextSpan(
-                text: "Already have an account? ",
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Login',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Have an Account ? ",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/userLogin');
+                    },
+                    child: Text("Log in"),
                   ),
                 ],
               ),
             ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "company user ? ",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/companyLogin');
+                    },
+                    child: Text("company Log in"),
+                  ),
+                ],
+              ),
+            )
           ],
         ));
   }

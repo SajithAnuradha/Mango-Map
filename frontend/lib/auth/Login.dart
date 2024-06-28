@@ -32,11 +32,21 @@ class Login extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ),
-                        UserLogIn(),
+                        MaterialApp(
+                          initialRoute: '/',
+                          routes: {
+                            '/': (context) => CategorySelector(),
+                            '/userLogin': (context) => UserLogIn(),
+                            '/userSignup': (context) => UserSignUp(),
+                            '/companyLogin': (context) => CompanyLogin(),
+                            '/companySignup': (contxet) => CompanysignUp()
+                          },
+                        )
+                        // UserLogIn(),
                         // CompanyLogin(),
                         // UserSignUp(),
                         // CompanysignUp(),
-                        // Categoryselector(),
+                        // CategorySelector(),
                       ],
                     )))));
   }

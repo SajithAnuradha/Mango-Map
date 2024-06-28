@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Categoryselector extends StatelessWidget {
+class CategorySelector extends StatefulWidget {
+  const CategorySelector({Key? key}) : super(key: key);
+
+  @override
+  State<CategorySelector> createState() => _Categoryselector();
+}
+
+class _Categoryselector extends State<CategorySelector> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,7 +20,7 @@ class Categoryselector extends StatelessWidget {
           CustomButton(
             text: 'User',
             onPressed: () {
-              // Handle User button press
+              Navigator.pushNamed(context, '/userLogin');
             },
           ),
           Row(
@@ -21,7 +28,15 @@ class Categoryselector extends StatelessWidget {
               Expanded(child: Divider(color: Colors.black)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('or'),
+                child: Text(
+                  'or',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
               ),
               Expanded(child: Divider(color: Colors.black)),
             ],
@@ -30,7 +45,7 @@ class Categoryselector extends StatelessWidget {
           CustomButton(
             text: 'Company',
             onPressed: () {
-              // Handle Company button press
+              Navigator.pushNamed(context, '/companyLogin');
             },
           ),
         ],

@@ -1,7 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class UserLogIn extends StatelessWidget {
+class UserLogIn extends StatefulWidget {
+  const UserLogIn({Key? key}) : super(key: key);
+
+  @override
+  State<UserLogIn> createState() => _UserLogIn();
+}
+
+class _UserLogIn extends State<UserLogIn> {
+  final _userNameController = TextEditingController();
+  String? _userNameError;
+  String? _storedUserName;
+  final _userPasswordController = TextEditingController();
+  String? _userPasswordError;
+  String? _storedUserPassword;
+
+  @override
+  void dispose() {
+    _userNameController.dispose();
+    _userPasswordController.dispose();
+  }
+
+  bool _isUserNameValid(String name) {
+    return name.isNotEmpty;
+  }
+
+  bool _isPasswordValid(String password) {
+    return password.isNotEmpty;
+  }
+
+  void _submit() {
+    setState(() {
+      if (_isPasswordValid(_userPasswordController.text)) {
+        _userPasswordError = null;
+        _storedUserPassword = _userPasswordController.text;
+      } else {
+        _userPasswordError = "Please check the password again !";
+        _storedUserPassword = null;
+      }
+      if (_isUserNameValid(_userNameController.text)) {
+        _userNameError = null;
+        _storedUserName = _userNameController.text;
+      } else {
+        _userNameError = "Please check user name again !";
+        _storedUserName = null;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -11,24 +58,21 @@ class UserLogIn extends StatelessWidget {
         padding: EdgeInsets.only(top: topPadding), // Top padding of 20 pixels
         child: Column(
           children: [
-            SizedBox(
-              child: TextField(
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
+            TextField(
+              controller: _userNameController,
+              decoration: InputDecoration(
+                labelText: 'Username / Email',
+                errorText: _userNameError,
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            SizedBox(
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
-              ),
+            TextField(
+              controller: _userPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                  labelText: 'Password', errorText: _userPasswordError),
             ),
             SizedBox(
               height: 20,
@@ -39,7 +83,13 @@ class UserLogIn extends StatelessWidget {
                 Row(
                   children: [
                     Checkbox(value: false, onChanged: (value) {}),
-                    Text("Remember me"),
+                    Text(
+                      'Remember me',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16.0,
+                      ),
+                    ),
                   ],
                 ),
                 TextButton(
@@ -52,7 +102,7 @@ class UserLogIn extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _submit(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 padding: EdgeInsets.symmetric(horizontal: 60, vertical: 1),
@@ -75,7 +125,15 @@ class UserLogIn extends StatelessWidget {
                 Expanded(child: Divider()),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("or"),
+                  child: Text(
+                    'or',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
                 ),
                 Expanded(child: Divider()),
               ],
@@ -84,8 +142,12 @@ class UserLogIn extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Login with",
-                style: TextStyle(fontSize: 16),
+                'Login with',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Row(
@@ -118,21 +180,54 @@ class UserLogIn extends StatelessWidget {
               ],
             ),
             SizedBox(height: 40),
-            Text.rich(
-              TextSpan(
-                text: "Don't have an account? ",
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'sign Up',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Don't have an account? ",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/userSignup');
+                    },
+                    child: Text("Sign Up"),
                   ),
                 ],
               ),
             ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Company User ? ",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/companyLogin');
+                    },
+                    child: Text("Compnay user Login"),
+                  ),
+                ],
+              ),
+            )
           ],
         ));
   }
