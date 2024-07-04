@@ -70,6 +70,18 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'profile_id',
       onDelete: 'CASCADE',
     });
+
+    // // a business profile has many promotions (1:M relationship)
+    BusinessProfile.hasMany(models.Promotion, {
+      foreignKey: 'business_profile_id',
+      onDelete: 'CASCADE',
+    });
+
+    // a business profile has many announcements (1:M relationship)
+    BusinessProfile.hasMany(models.Annoucement, {
+      foreignKey: 'business_profile_id',
+      onDelete: 'CASCADE',
+    });
   };
 
   return BusinessProfile;
