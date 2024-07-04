@@ -16,7 +16,9 @@
     "express": "^4.19.2",
     "joi": "^17.13.3",
     "mysql2": "^3.10.2",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",

@@ -6,6 +6,7 @@ const port = process.env.PORT || 8888;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+require('./api/v1/start/swagger')(app);
 
 require('./api/v1/start/routes')(app);
 // demo only
