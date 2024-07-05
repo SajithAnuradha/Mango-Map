@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/Others/others.dart';
+import 'package:flutter_application_1/pages/Others/addPost/addPhotoHome.dart';
+
 
 void main() {
   runApp(const MongoMap());
@@ -32,7 +34,9 @@ class MongoMap extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0CA9C8)),
         useMaterial3: true,
       ),
+
       home: const MyHomePage(title: 'MongoMap Home Page'),
+
     );
   }
 }
