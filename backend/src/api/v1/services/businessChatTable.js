@@ -1,12 +1,16 @@
-const express = require('express');
-const { businessMessageHandler } = require('../controllers/chat.controller');
+const { BusinessChat } = require('../models');
 
-const router = express.Router();
+async function businessMessage(data, id) {
+  // then create a new business chat
+  const newBusinessChat = await BusinessChat.create({
+    profile_id: id,
+    message: data.message,
+    user_id: data.userId,
+  });
 
-// define the routes related to the chat feature
-router.post('/', businessMessageHandler);
-router.delete('/', businessMessageHandler);
-router.post('/', businessMessageHandler);
-router.get('/', businessMessageHandler);
+  return newBusinessChat;
+}
 
-module.exports = router;
+module.exports = {
+  businessMessage,
+};

@@ -6,9 +6,9 @@ const {
 const router = express.Router();
 
 // define the routes related to the chat feature
-router.post('/', businessMessageHandler);
-router.delete('/', businessMessageHandler);
-router.post('/', businessMessageHandler);
-router.get('/', businessMessageHandler);
+router.post('/:id', businessMessageHandler);
+router.delete('/:id/message/:user_id', businessMessageHandler);
+router.post('/id/message/:user_id', businessMessageHandler);
+router.get('/:id', businessMessageHandler);
 
 module.exports = router;

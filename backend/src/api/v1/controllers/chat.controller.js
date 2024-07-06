@@ -35,10 +35,9 @@ async function businessMessageHandler(req, res) {
   }
 
   // parse the request body data to register the normal user
-  const businessChat = await businessMessage(req.body);
+  const businessChat = await businessMessage(req.body, req.params.id);
 
-  // return the normal user id as the response
-  res.json({ id: normalUser.id });
+  res.end();
 }
 
 module.exports = {

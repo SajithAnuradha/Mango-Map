@@ -5,4 +5,6 @@ module.exports = (app) => {
   app.use('/api/v1/register', RegisterRouter);
 
   app.use('/api/v1/chat', ChatRouter);
+
+  
 };
