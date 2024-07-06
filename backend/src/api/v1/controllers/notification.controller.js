@@ -52,22 +52,29 @@ const {getNotification,deleteNotification} = require('../services/notificationTa
 
 
 async function NotificationHandler(req, res) {
-    const notification = await getNotification(req.query.notification_id);
-    if (!notification) {
-        return res.status(400).json({ error: 'Notification not found' });
+    try {
+        const notification = await getNotification(req.query.notification_id);
+        if (!notification) {
+            return res.status(400).json({ error: 'Notification not found' });
+        }
+        res.json(notification);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred' });
     }
-    res.json(notification);
 }
 
 async function NotificationDeleteHandler(req, res) {
 
     if (!req.body.notification_id) {
-        return res.status(400).json({ error: 'Notification is not provided' });
+        return res.status(400).json({ error: 'Notification ID is not provided' });
     }
 
-    await deleteNotification(req.body.notification_id);
-
-    res.json({ message: 'Notification deleted' });
+    try {
+        await deleteNotification(req.body.notification_id);
+        res.json({ message: 'Notification deleted' });
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred' });
+    }
 }
 
 module.exports = {
