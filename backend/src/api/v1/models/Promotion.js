@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     // a promotion belongs to a normal user (1:M relationship)
     Promotion.belongsTo(models.NormalUser, {
-      foreignKey: 'normal_user_id',
+      foreignKey: 'user_id',
     });
   };
 

@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
   Notification.associate = (models) => {
     // a Notification belongs to a normal user (1:M relationship)
     Notification.belongsTo(models.NormalUser, {
-      foreignKey: 'normal_user_id',
+      foreignKey: 'user_id',
     });
   };
 
