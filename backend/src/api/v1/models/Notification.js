@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Promotion = sequelize.define('Promotion', {
+  const Notification = sequelize.define('Notification', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -23,19 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    business_profile_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Business profile ID cannot be null',
-        },
-      },
-      reference: {
-        model: 'BusinessProfile',
-        key: 'id',
-      },
-    },
     normal_user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -52,16 +39,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // associations with the other models
-  Promotion.associate = (models) => {
-    // a promotion belongs to a business profile (1:M relationship)
-    Promotion.belongsTo(models.BusinessProfile, {
-      foreignKey: 'business_profile_id',
-    });
-    // a promotion belongs to a normal user (1:M relationship)
-    Promotion.belongsTo(models.NormalUser, {
+  Notification.associate = (models) => {
+    // a Notification belongs to a normal user (1:M relationship)
+    Notification.belongsTo(models.NormalUser, {
       foreignKey: 'normal_user_id',
     });
   };
 
-  return Promotion;
+  return Notification;
 };
