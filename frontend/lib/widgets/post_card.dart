@@ -49,7 +49,8 @@ class _PostState extends State<Post> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+                top: 6.0, left: 12.0, right: 6.0, bottom: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +80,7 @@ class _PostState extends State<Post> {
           ),
         ),
         const SizedBox(
-          height: 2,
+          height: 0.5,
         ),
         Stack(
           children: [
@@ -163,7 +164,8 @@ class _PostState extends State<Post> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                  right: 8.0, left: 16, top: 8, bottom: 0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image.asset(
@@ -175,7 +177,8 @@ class _PostState extends State<Post> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(
+                    left: 8.0, right: 8, top: 8, bottom: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,7 +191,7 @@ class _PostState extends State<Post> {
                           "${widget.placeName} , ",
                           style: const TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                            fontSize: 15,
                             decoration: TextDecoration.none,
                             color: Colors.black,
                           ),
@@ -197,7 +200,7 @@ class _PostState extends State<Post> {
                           widget.countryName,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 15,
                             decoration: TextDecoration.none,
                             color: Colors.black,
                           ),
@@ -212,7 +215,7 @@ class _PostState extends State<Post> {
                               (index) => const Icon(
                                 Icons.star,
                                 color: Colors.yellow,
-                                size: 25,
+                                size: 15,
                               ),
                             ),
                             ...List.generate(
@@ -220,7 +223,7 @@ class _PostState extends State<Post> {
                               (index) => const Icon(
                                 Icons.star,
                                 color: Colors.grey,
-                                size: 25,
+                                size: 15,
                               ),
                             ),
                           ],
@@ -231,7 +234,7 @@ class _PostState extends State<Post> {
                       widget.description,
                       style: const TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 18,
+                        fontSize: 15,
                         decoration: TextDecoration.none,
                         color: Colors.black,
                       ),

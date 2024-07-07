@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_application_1/pages/Explore/explore.dart';
-import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/Explore/explore.dart';
+// import 'package:flutter_application_1/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(
-        key: Key('Home'),
-      ),
-      // home: Explore(key: const Key('explore')),
+      // home: const Home(
+      //   key: Key('Home'),
+      // ),
+      home: Explore(key: const Key('explore')),
     );
   }
 }
