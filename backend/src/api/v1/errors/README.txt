@@ -1,0 +1,1 @@
+All the custome errors are defined here.
