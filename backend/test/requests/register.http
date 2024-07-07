@@ -1,0 +1,17 @@
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+
+### Register a Normal User
+POST {{host}}/api/v1/register/normal {{http}}
+Content-Type: {{content-type}}
+
+{
+    "email": "shavin@gmail.com",
+    "username": "shavin",
+    "password": "shavin",
+    "firstName": "Shavin",
+    "lastName": "Anjitha",
+    "birthday": "2002-01-11"
+}

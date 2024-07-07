@@ -1,18 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'pages/Others/others.dart';
+import 'package:flutter_application_1/pages/Others/addPost/addPhotoHome.dart';
 
 // Auth  imports
 import 'auth/Login.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MongoMap());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  bool? isChecked = true;
+class MongoMap extends StatelessWidget {
+  const MongoMap({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
 
 
 
