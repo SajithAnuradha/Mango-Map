@@ -24,6 +24,6 @@ db.sequelize.sync().then(() => {
   console.log('[DATABASE] Database connected');
 
   app.listen(port, () => {
-    console.log(`[SERVER] Server is running on port ${port}`);
+    console.log(`[SERVER] Server is running on port ${port} `);
   });
 });
