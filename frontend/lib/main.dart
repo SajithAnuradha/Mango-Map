@@ -1,17 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'pages/Others/others.dart';
+import '../pages/Map/map_screen.dart';
+import '../pages/Map/trending_screen.dart';
 import 'package:flutter_application_1/pages/Others/addPost/addPhotoHome.dart';
 import 'package:flutter_application_1/pages/Explore/explore.dart';
 // import 'package:flutter_application_1/pages/home.dart';
 
 // Auth  imports
 import 'auth/Login.dart';
+import 'pages/Map/map_screen.dart';
 
-void main() {
-  runApp(const MongoMap());
-}
+void main() => runApp(MongoMap());
 
 class MongoMap extends StatelessWidget {
   const MongoMap({super.key});
@@ -21,16 +21,11 @@ class MongoMap extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Login(),
+        body: MapScreen(),
       ),
     );
   }
 }
-
-
-
-
-
 
 //----------------------------------Single Components--------------------------------
 

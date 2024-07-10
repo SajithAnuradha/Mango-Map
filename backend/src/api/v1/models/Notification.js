@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     description: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(1000),
       allowNull: false,
       validate: {
         notNull: {
@@ -23,7 +23,20 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    normal_user_id: {
+    business_profile_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Business profile ID cannot be null',
+        },
+      },
+      reference: {
+        model: 'BusinessProfile',
+        key: 'id',
+      },
+    },
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -38,11 +51,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  // associations with the other models
+  // Associations with other models
   Notification.associate = (models) => {
-    // a Notification belongs to a normal user (1:M relationship)
+    // A notification belongs to a normal user (1:M relationship)
     Notification.belongsTo(models.NormalUser, {
       foreignKey: 'user_id',
+    });
+
+    // A notification belongs to a business profile (1:M relationship)
+    Notification.belongsTo(models.BusinessProfile, {
+      foreignKey: 'business_profile_id',
     });
   };
 

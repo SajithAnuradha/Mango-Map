@@ -38,6 +38,11 @@ dependencies:
   google_fonts: ^6.2.1
 
   flutter_staggered_grid_view: ^0.6.1
+  google_maps_flutter: ^2.7.0
+  google_maps_flutter_platform_interface: ^2.8.0
+  google_maps_flutter_ios: ^2.10.0
+  google_maps_flutter_web: ^0.5.8
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -5,7 +5,7 @@
 
 ### Register a Normal User
 POST {{host}}/api/v1/register/normal {{http}}
-Content-Type: {{content-type}}
+Content-Type: application/json
 
 {
     "email": "shavin@gmail.com",
@@ -15,3 +15,11 @@ Content-Type: {{content-type}}
     "lastName": "Anjitha",
     "birthday": "2002-01-11"
 }
+
+
+
+
+
+
+
+
