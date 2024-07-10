@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Location = sequelize.define("Location", {
+  const Location = sequelize.define('Location', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Latitude cannot be null",
+          msg: 'Latitude cannot be null',
         },
       },
     },
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Longitude cannot be null",
+          msg: 'Longitude cannot be null',
         },
       },
     },
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Google Place ID cannot be null",
+          msg: 'Google Place ID cannot be null',
         },
       },
     },
@@ -66,12 +66,12 @@ module.exports = (sequelize, DataTypes) => {
   Location.associate = (models) => {
     // a location has one business profile (1:1 relationship)
     Location.hasOne(models.BusinessProfile, {
-      foreignKey: "location_id",
+      foreignKey: 'location_id',
     });
 
     // a location has many location based images (1:M relationship)
     Location.hasMany(models.LocationBasedImage, {
-      foreignKey: "location_id",
+      foreignKey: 'location_id',
     });
   };
 

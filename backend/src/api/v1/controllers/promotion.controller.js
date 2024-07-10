@@ -25,18 +25,42 @@ const { validatePromotion } = require('../validations/promotion.validation');
  *           application/json:
  *
  */
+// async function postPromotionUserHandler(req, res) {
+//   // parse the body of the request through the validation
+//   const { error } = validatePromotion(req.body);
+//   if (error) {
+//     return res.status(400).json({ error: error.details[0].message });
+//   }
+
+//   // parse the request body data to post the promotion
+//   const promotion = await postPromotion(req.body);
+
+//   // return the promotion id as the response
+//   res.json({ id: promotion.id });
+// }
+
 async function postPromotionUserHandler(req, res) {
-  // parse the body of the request through the validation
-  const { error } = validatePromotion(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+  try {
+    // Parse and validate the body of the request
+    const { error } = validatePromotion(req.body);
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
+
+    // Post the promotion
+    const promotion = await postPromotion(req.body);
+
+    // Check if postPromotion returned a valid promotion
+    if (!promotion || !promotion.id) {
+      return res.status(500).json({ error: 'Failed to create promotion' });
+    }
+
+    // Return the promotion id as the response
+    res.json({ id: promotion.id });
+  } catch (err) {
+    console.error('Error posting promotion:', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
-
-  // parse the request body data to post the promotion
-  const promotion = await postPromotion(req.body);
-
-  // return the promotion id as the response
-  res.json({ id: promotion.id });
 }
 
 module.exports = {

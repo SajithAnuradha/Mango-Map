@@ -1,15 +1,33 @@
-const { Promotion } = require('../models');
+const { Promotion, UserAuth, BusinessUser } = require('../models');
 
 async function postPromotion(data) {
   // create a new promotionn
-  const newpromotion = await Promotion.create({
-    title : data.title,
-    description : data.description,
-    business_profile_id : data.business_profile_id,
-    normal_user_id : data.normal_user_id,
+
+  const user = await UserAuth.findOne({
+    where: {
+      username: data.username,
+    },
   });
 
-  return newpromotion;
+  const businessUser = await BusinessUser.findOne({
+    where: {
+      id: user.business_user_id,
+    },
+  });
+
+  try {
+    const newpromotion = await Promotion.create({
+      title: data.title,
+      description: data.description,
+      business_profile_id: businessUser.profile_id,
+      user_id: data.user_id,
+    });
+
+    return newpromotion;
+    
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = {

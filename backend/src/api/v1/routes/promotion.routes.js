@@ -6,6 +6,6 @@ const {
 const router = express.Router();
 
 // define the routes related to the promotion feature
-router.post('/promotion', postPromotionUserHandler);
+router.post('/', postPromotionUserHandler);
 
 module.exports = router;
