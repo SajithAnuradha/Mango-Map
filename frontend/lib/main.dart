@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../pages/map_screen.dart';
-import '../pages/trending_screen.dart';
+import '../pages/Map/map_screen.dart';
+import '../pages/Map/trending_screen.dart';
 import 'package:flutter_application_1/pages/Others/addPost/addPhotoHome.dart';
 
 
