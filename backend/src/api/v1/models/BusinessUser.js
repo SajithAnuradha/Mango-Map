@@ -38,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   BusinessUser.associate = (models) => {
     // a business user has one business profile (1:1 relationship)
     BusinessUser.belongsTo(models.BusinessProfile, {
-      foreignKey: 'user_id',
+      foreignKey: 'profile_id',
+      onDelete: 'CASCADE',
     });
 
     // a business user has one user auth (1:1 relationship)

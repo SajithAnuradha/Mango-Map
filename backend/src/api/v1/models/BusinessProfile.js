@@ -50,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    profile_image: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
   });
 
   // associations with the other models
