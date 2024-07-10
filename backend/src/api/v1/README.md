@@ -28,7 +28,7 @@
 
 - Business User Profile
 
-  1. Profile Image Change - **api/v1/profile/business/{id}/image** - PUT
+  1. Profile Image Change - **api/v1/profile/business/{id}/image** - PUT ------------------OK
   2. Profile Update - **api/v1/profile/business/{id}** - PUT ------------------------------OK
   3. Delete Profile - **api/v1/profile/business/{id}** - DELETE ---------------------------OK
   4. Get Profiles - **api/v1/profile/business** - GET -------------------------------------OK

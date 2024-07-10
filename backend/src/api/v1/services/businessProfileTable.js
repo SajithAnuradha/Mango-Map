@@ -18,6 +18,22 @@ async function updateBusinessProfile(profileId, businessProfileData) {
   return profile;
 }
 
+async function addBusinessProfileImage(profileId, imageUrl) {
+  // update the profile by adding profile image url
+  const profile = await BusinessProfile.update(
+    {
+      profile_image: imageUrl,
+    },
+    {
+      where: {
+        id: profileId,
+      },
+    }
+  );
+
+  return profile;
+}
+
 async function getBusinessProfiles(page, limit) {
   // get the business profiles icluding the business user model, incuding the profile count
   const businessProfiles = await BusinessUser.findAndCountAll({
@@ -124,6 +140,7 @@ async function locationExists(locationId) {
 
 module.exports = {
   updateBusinessProfile,
+  addBusinessProfileImage,
   getBusinessProfiles,
   getBusinessProfileByUserId,
   deleteBusinessProfile,

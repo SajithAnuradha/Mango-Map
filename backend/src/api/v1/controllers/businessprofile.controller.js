@@ -12,7 +12,9 @@ const {
   profileExists,
   getBusinessProfileQRById,
   updateBusinessProfile,
+  addBusinessProfileImage,
 } = require('../services/businessProfileTable');
+const { uploadFileToBlob } = require('../util/azurePhotoUpload');
 const { getPaginationParameters } = require('../util/pagination');
 const {
   validateAnnoucementCreateBody,
@@ -101,6 +103,32 @@ async function getBusinessProfileQRCodeHandler(req, res) {
   return res.json(profileQr);
 }
 
+async function addBusinessProfileImageHandler(req, res) {
+  // get the business profile id from the request parameter
+  const { id } = req.params;
+  const profileId = parseInt(id) || -1;
+  if (profileId === -1) {
+    throw new APIError('Invalid business profile id', 400);
+  }
+
+  // check whether the profile exists
+  const profileExists_ = await profileExists(profileId);
+  if (!profileExists_) {
+    throw new BusinessError('Business profile does not exist', 404);
+  }
+
+  // get the file throught the file
+  const file = req.file;
+  if (!file) {
+    throw new APIError('No file found', 400);
+  }
+  // first upload the image to the storage account
+  const url = await uploadFileToBlob(file);
+  // update the profile by adding profile image url
+  const profile = await addBusinessProfileImage(profileId, url);
+  return res.json(profile);
+}
+
 async function getBusinessAnnoucementHandler(req, res) {
   const { id } = req.params;
   const profileId = parseInt(id) || -1;
@@ -170,4 +198,5 @@ module.exports = {
   getBusinessAnnoucementHandler,
   getAnnoucementByIdHandler,
   createAnnoucementHandler,
+  addBusinessProfileImageHandler,
 };

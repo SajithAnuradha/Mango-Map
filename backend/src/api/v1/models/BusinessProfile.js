@@ -50,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    profile_image: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
   });
 
   // associations with the other models
@@ -81,10 +85,6 @@ module.exports = (sequelize, DataTypes) => {
     BusinessProfile.hasMany(models.Annoucement, {
       foreignKey: 'business_profile_id',
       onDelete: 'CASCADE',
-    });
-
-    BusinessProfile.belongsTo(models.BusinessUser, {
-      foreignKey: 'profile_id',
     });
   };
 
