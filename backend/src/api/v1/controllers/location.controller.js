@@ -17,9 +17,11 @@ async function getimages (req,res){
 }
 //have to check
 async function uploadimages (req,res){
+    console.log(req.body);
+
     try {
-        const {file,location_id,user_id,review}=req;
-        console.log(file);
+        const {file,location_id,user_id,review}=req.body;
+        console.log(location_id);
         const url=await uploadFileToBlob(file);
         const image=await LocationBasedImage.create({
             photo:url,
