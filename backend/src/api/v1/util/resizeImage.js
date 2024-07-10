@@ -1,5 +1,4 @@
 const sharp = require('sharp');
-const fs = require('fs');
 
 async function resizeImage(fileData, width, height) {
   try {

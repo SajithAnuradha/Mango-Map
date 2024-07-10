@@ -1,4 +1,4 @@
-function globalErrorHandler(err, req, res, next) {
+function globalErrorHandler(err, req, res) {
   if (err) {
     console.error(err.stack);
     // determine the status code of the error if error has one
