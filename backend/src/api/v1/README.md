@@ -29,13 +29,15 @@
 - Business User Profile
 
   1. Profile Image Change - **api/v1/profile/business/{id}/image** - PUT
-  2. Profile Update - **api/v1/profile/business/{id}** - PUT
-  3. Delete Profile - **api/v1/profile/business/{id}** - DELETE
-  4. Get Profiles - **api/v1/profile/business** - GET
-  5. Get Profile - **api/v1/profile/business/{id}** - GET
-  6. Get QR Code - **api/v1/profile/business/{id}/qr** - GET
-  7. One Time Pin - **api/v1/profile/business/{id}/pin** - GET
-  8. Announcement - **api/v1/profile/business/{id}/announcement** - POST
+  2. Profile Update - **api/v1/profile/business/{id}** - PUT ------------------------------OK
+  3. Delete Profile - **api/v1/profile/business/{id}** - DELETE ---------------------------OK
+  4. Get Profiles - **api/v1/profile/business** - GET -------------------------------------OK
+  5. Get Profile - **api/v1/profile/business/{id}** - GET ---------------------------------OK
+  6. Get QR Code - **api/v1/profile/business/{id}/qr** - GET ------------------------------OK
+  7. One Time Pin - **api/v1/profile/business/{id}/pin** - GET ----------------------------#####
+  8. Get Announcements - **api/v1/profile/business/{id}/announcements** - GET --------------OK
+  9. Get Announcement - **api/v1/profile/business/{id}/announcement/{id}** - GET -----------OK
+  10. Announcement - **api/v1/profile/business/{id}/announcement** - POST ------------------- OK
 
 - Business Photo Upload
 
