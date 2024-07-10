@@ -1,5 +1,10 @@
 const { registerNormalUser } = require('../services/normalUserTable');
+const { registerBusinessUser } = require('../services/businessUserTable');
+
 const { validateNormalUser } = require('../validations/normaluser.validation');
+const {
+  validateBusinessUser,
+} = require('../validations/businessuser.validation');
 
 /**
  * @swagger
@@ -25,6 +30,7 @@ const { validateNormalUser } = require('../validations/normaluser.validation');
  *           application/json:
  *
  */
+
 async function registerNormalUserHandler(req, res) {
   // parse the body of the request through the validation
   const { error } = validateNormalUser(req.body);
@@ -39,8 +45,18 @@ async function registerNormalUserHandler(req, res) {
   res.json({ id: normalUser.id });
 }
 
-function registerBusinessUserHandler(req, res) {
-  res.json({ message: 'Register business user' });
+async function registerBusinessUserHandler(req, res) {
+  // parse the body of the request through the validation
+  const { error } = validateBusinessUser(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+
+  // parse the request body data to register the normal user
+  const businessUser = await registerBusinessUser(req.body);
+
+  // return the normal user id as the response
+  res.json({ id: businessUser.id });
 }
 
 module.exports = {

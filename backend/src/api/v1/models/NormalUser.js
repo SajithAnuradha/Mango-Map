@@ -92,6 +92,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
     });
+
+    // a normal user has many notification (1:M relationship)
+    NormalUser.hasMany(models.Notification, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
   };
 
   return NormalUser;
