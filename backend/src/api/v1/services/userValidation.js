@@ -1,18 +1,18 @@
-const { UserAuth } = require('../models/UserAuth');
-const { hashPassword } = require('../util/password');
+const { UserAuth } = require('../models');
+const { comparePassword } = require('../util/password');
 
 async function userValidation(data) {
   try {
     const user = await UserAuth.findOne({
       where: {
-        username: data.userName,
+        username: data.username,
       },
     });
     if (user == null) {
       // There is no any user matched with entered userName
       // console.log('no such user in database')
       return false;
-    } else if (user.password != hashPassword(data.password)) {
+    } else if (!comparePassword(data.password, user.password)) {
       // invalid pasword
       return false;
     } else {

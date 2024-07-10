@@ -1,4 +1,4 @@
-const { UserAuth } = require('../models/UserAuth');
+const { UserAuth } = require('../models');
 const { hashPassword } = require('../util/password');
 
 async function changeUserPassword(data) {

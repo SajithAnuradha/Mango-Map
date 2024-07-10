@@ -8,6 +8,6 @@ const {
 const router = express.Router();
 
 router.post('/login', userLoginHandler);
-router.put('/change-pass/:id', userPasswordChangeHandler);
+router.put('/change-pass', userPasswordChangeHandler);
 
 module.exports = router;
