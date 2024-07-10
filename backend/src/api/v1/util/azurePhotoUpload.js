@@ -7,7 +7,7 @@ const resizeImage = require('./resizeImage');
 const connStr = process.env.AZURE_CONNECTION_STRING || null;
 
 // storage account credentials
-const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
+const blobServiceClient = new BlobServiceClient(connStr);
 const containerName = process.env.BLOB_CONTAINER_NAME;
 
 // resized image width and height

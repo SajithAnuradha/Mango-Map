@@ -15,4 +15,5 @@ async function resizeImage(fileData, width, height) {
     return false;
   }
 }
+
 module.exports = resizeImage;
