@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'pages/Others/others.dart';
 import 'package:flutter_application_1/pages/Others/addPost/addPhotoHome.dart';
+import 'package:flutter_application_1/pages/Explore/explore.dart';
+// import 'package:flutter_application_1/pages/home.dart';
 
 // Auth  imports
 import 'auth/Login.dart';
