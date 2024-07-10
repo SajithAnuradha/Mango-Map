@@ -40,13 +40,14 @@
 - Business Photo Upload
 
   1. QR based Review - **api/v1/business/{id}/review** - POST (Include Rating, Images)
-  2. Review Delete - **api/v1/business/{id}/review/{id}** - DELETE
-  3. Photo Delete - **api/v1/business/{id}/image/{id}** - DELETE
-  4. Get Reviews - **api/v1/business/{id}/reviews** - GET
-  5. Get Review - **api/v1/business/{id}/review/{id}** - GET
-  6. Like Image - **api/v1/business/{id}/image/{id}/like** - POST
-  7. Remove Like - **api/v1/business/{id}/image/{id}/like** - DELETE
-  8. Update Review - **api/v1/business/{id}/review/{id}** - PUT
+  2. Review Delete - **api/v1/business/{id}/review/{id}** - DELETE --------------------------OK
+  3. Photo Delete - **api/v1/business/{id}/image/{id}** - DELETE ----------------------------OK
+  4. Get Reviews - **api/v1/business/{id}/reviews** - GET -----------------------------------OK
+  5. Get Review - **api/v1/business/{id}/review/{id}** - GET --------------------------------OK
+  6. Get Likes - **api/v1/business/{id}/photo/{id}/likes** - GET ----------------------------OK
+  7. Like Image - **api/v1/business/{id}/photo/{id}/like** - POST ---------------------------OK
+  8. Remove Like - **api/v1/business/{id}/photo/{id}/like** - DELETE ------------------------OK
+  9. Update Review - **api/v1/business/{id}/review/{id}** - PUT -----------------------------ISSUE
 
 - Search
 

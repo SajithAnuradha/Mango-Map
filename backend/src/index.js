@@ -1,6 +1,8 @@
 const express = require('express');
+require('express-async-errors');
 require('dotenv').config();
 const db = require('./api/v1/models');
+const { globalErrorHandler } = require('./api/v1/start/errorHandler');
 const port = process.env.PORT || 8888;
 
 const app = express();
@@ -15,10 +17,7 @@ app.get('/', (req, res) => {
 });
 
 // habdle the errors that are thrown by the application
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: err.message });
-});
+app.use(globalErrorHandler);
 
 db.sequelize.sync().then(() => {
   console.log('[DATABASE] Database connected');
