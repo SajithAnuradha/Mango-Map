@@ -1,0 +1,20 @@
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+
+### Get business profile
+GET {{host}}/api/v1/businessProfile?id=12
+Content-Type: application/json
+
+### Get notifications
+GET {{host}}/api/v1/notification/get_notification?id=3
+Content-Type: application/json
+
+### Delete notification
+DELETE {{host}}/api/v1/notification/delete_notification?id=2
+Content-Type: application/json
+
+### Get notifications
+GET {{host}}/api/v1/location?id=3
+Content-Type: application/json

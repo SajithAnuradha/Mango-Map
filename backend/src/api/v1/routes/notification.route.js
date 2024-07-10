@@ -6,7 +6,7 @@ const {
 const router = express.Router();
 
 // define the routes related to the notification feature
-router.get('/notification', NotificationHandler);
-router.post('/notification', NotificationDeleteHandler);
+router.get('/get_notification', NotificationHandler);
+router.delete('/delete_notification', NotificationDeleteHandler);
 
 module.exports = router;

@@ -28,16 +28,17 @@ const {getLocation} = require('../services/locationTable');
 
 async function LocationHandler(req, res) {
     try {
-      const { location, locationBasedImages } = await getLocation(req.query.location_id);
+      // const { location, locationBasedImages } = await getLocation(req.query.location_id);
+      const location = await getLocation(req.query.id);
       if (!location) {
         return res.status(400).json({ error: 'Location not found' });
       }
-      res.json({ location, locationBasedImages });
+      // res.json({ location, locationBasedImages });
+      res.json(location);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
   }
-
 
 module.exports = {
     LocationHandler,

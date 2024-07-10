@@ -3,6 +3,6 @@ const {LocationHandler} = require('../controllers/location.controller');
 
 const router = express.Router();
 
-router.get('/location', LocationHandler);
+router.get('/', LocationHandler);
 
 module.exports = router;

@@ -9,13 +9,15 @@ async function getLocation(location_id){
             },
         });
     
-        const locationBasedImages = await LocationBasedImage.findAll({
-            where: {
-                location_id: location_id,
-            },
-        });
+        // const locationBasedImages = await LocationBasedImage.findAll({
+        //     where: {
+        //         location_id: location_id,
+        //     },
+        // });
     
-        return {location, locationBasedImages};
+        // return {location, locationBasedImages};
+
+        return location;
         
     } catch (error) {
         throw new Error('Error getting location');

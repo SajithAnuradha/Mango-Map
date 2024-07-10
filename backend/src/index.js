@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the backend!' });
 });
 
-// habdle the errors that are thrown by the application
+// handle the errors that are thrown by the application
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: err.message });
