@@ -2,11 +2,10 @@ const { BlobServiceClient } = require('@azure/storage-blob');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const resizeImage = require('./resizeImage');
-
 const connStr = process.env.AZURE_CONNECTION_STRING || null;
 
 // storage account credentials
-const blobServiceClient = new BlobServiceClient(connStr);
+const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 const containerName = process.env.BLOB_CONTAINER_NAME;
 
 // resized image width and height
