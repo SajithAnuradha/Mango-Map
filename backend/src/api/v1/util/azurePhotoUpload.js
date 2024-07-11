@@ -1,5 +1,4 @@
 const { BlobServiceClient } = require('@azure/storage-blob');
-const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const resizeImage = require('./resizeImage');
@@ -31,15 +30,15 @@ function getResizedBlobName(fileName, tailName) {
   );
 }
 
-function getResizedOutputFile(fileName) {
-  return (
-    path.dirname(filePath) +
-    '\\' +
-    path.basename(filePath, path.extname(filePath)) +
-    '-thumb' +
-    path.extname(filePath)
-  );
-}
+// function getResizedOutputFile(fileName) {
+//   return (
+//     path.dirname(filePath) +
+//     '\\' +
+//     path.basename(filePath, path.extname(filePath)) +
+//     '-thumb' +
+//     path.extname(filePath)
+//   );
+// }
 
 async function uploadFileToBlob(file) {
   try {
