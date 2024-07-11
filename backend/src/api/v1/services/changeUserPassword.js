@@ -1,27 +1,20 @@
 const { UserAuth } = require('../models');
 const { hashPassword } = require('../util/password');
 
-async function changeUserPassword(data) {
+async function changeUserPassword(userId, data) {
   const newPassword = hashPassword(data.newPassword);
-  try {
-    const result = await UserAuth.update(
-      {
-        password: newPassword,
+  const result = await UserAuth.update(
+    {
+      password: newPassword,
+    },
+    {
+      where: {
+        id: userId,
       },
-      {
-        where: {
-          id: data.userId,
-        },
-      }
-    );
-    if (result[0] == 1) {
-      return true;
-    } else {
-      return false;
     }
-  } catch {
-    return false;
-  }
+  );
+
+  return result;
 }
 
 module.exports = {

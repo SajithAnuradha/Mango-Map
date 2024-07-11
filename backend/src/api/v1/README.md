@@ -2,13 +2,13 @@
 
 - Register Handling
 
-  1. Normal User Register - **api/v1/register/normal** - POST
-  2. Business User Register - **api/v1/register/business** - POST
+  1. Normal User Register - **api/v1/register/normal** - POST ----OK
+  2. Business User Register - **api/v1/register/business** - POST --------------OK (need modification)
 
 - Login
 
-  1. **api/v1/auth/login** - POST
-  2. Password Change - **api/v1/auth/change-pass/{id}** - PUT
+  1. **api/v1/auth/login** - POST -----------------------------------------------OK
+  2. Password Change - **api/v1/auth/change-pass/{id}** - PUT -------------------OK
 
 - Normal User Profile
 

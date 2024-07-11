@@ -5,6 +5,7 @@ const {
   UserAuth,
 } = require('../models');
 const { hashPassword } = require('../util/password');
+const { generateProfileToken } = require('../util/profileToken');
 
 async function registerBusinessUser(data) {
   // first create a location for business profile
@@ -25,7 +26,7 @@ async function registerBusinessUser(data) {
   const newBusinessProfile = await BusinessProfile.create({
     profile_name: data.businessName,
     description: data.description,
-    profile_token: 'no data', // should fill this field. required for QR codes
+    profile_token: generateProfileToken(),
     otp: 'no data', // should fill this field. required for otp
     location_id: newBusinessLocation.id,
   });
