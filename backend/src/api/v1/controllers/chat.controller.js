@@ -57,7 +57,7 @@ async function deletebusinessMessageHandler(req, res) {
     if (!chat) {
       res.status(400).json({ error: 'userId, chatId Invalid' });
     }
-    res.status(200).json({ message: 'successful delete process', data: chat });
+    res.status(200).json({ message: 'successfully deleting process', data: chat });
   } catch (error) {
     res.status(400).json({ error: 'userId, chatId are required' });
   }
@@ -86,7 +86,7 @@ async function getbusinessMessageHandler(req, res) {
     if (!getChat) {
       res.status(400).json({ error: 'profileId is Invalid' });
     }
-    res.status(200).json({ message: 'successfuly fetched', data: getChat });
+    res.status(200).json({ message: 'successfully fetched', data: getChat });
   } catch (error) {
     res.status(400).json({ error: 'profileId is required' });
   }
