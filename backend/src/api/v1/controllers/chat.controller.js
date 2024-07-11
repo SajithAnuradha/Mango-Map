@@ -1,4 +1,11 @@
-const { businessMessage } = require('../services/businessChatTable');
+const {
+  createBusinessChat,
+  postBusinessMessage,
+  deleteBusinessMessage,
+  getBusinessMessage,
+  replychat,
+  getChatDetails,
+} = require('../services/businessChatTable');
 const {
   validateBusinessChat,
 } = require('../validations/businessChat.validation');
@@ -27,19 +34,67 @@ const {
  *           application/json:
  *
  */
-async function businessMessageHandler(req, res) {
-  // parse the body of the request through the validation
-  const { error } = validateBusinessChat(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+
+async function postbusinessMessageHandler(req, res) {
+  const { profileId, message, userId } = req.body;
+  try {
+    const newChat = await postBusinessMessage(profileId, message, userId);
+    return res.status(201).json({
+      message: 'Business chat created successfully',
+      data: newChat,
+    });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: 'userId, profileId, and message are required' });
   }
+}
 
-  // parse the request body data to register the normal user
-  const businessChat = await businessMessage(req.body, req.params.id);
+async function deletebusinessMessageHandler(req, res) {
+  const { userId, chatId } = req.body;
+  try {
+    const chat = await deleteBusinessMessage(userId, chatId);
+    if (!chat) {
+      res.status(400).json({ error: 'userId, chatId Invalid' });
+    }
+    res.status(200).json({ message: 'successfuly deleted', data: chat });
+  } catch (error) {
+    res.status(400).json({ error: 'userId, chatId are required' });
+  }
+}
 
-  res.end();
+async function replybusinessMessageHandler(req, res) {
+  const { profileId, message, userId, chatId } = req.body;
+  try {
+    const newChat = await postBusinessMessage(profileId, message, userId);
+    // console.log('newChat', newChat);
+    const reply = replychat(chatId, newChat.id);
+    console.log('reply', reply);
+    if (!reply) {
+      res.status(400).json({ error: 'userId, chatId Invalid' });
+    }
+    res.status(200).json({ message: 'successfully added' });
+  } catch (error) {
+    res.status(400).json({ error: error });
+  }
+}
+
+async function getbusinessMessageHandler(req, res) {
+  const { profileId } = req.body;
+  try {
+    const getChat = await getBusinessMessage(profileId);
+    if (!getChat) {
+      res.status(400).json({ error: 'profileId is Invalid' });
+    }
+    res.status(200).json({ message: 'successfuly fetched', data: getChat });
+  } catch (error) {
+    res.status(400).json({ error: 'profileId is required' });
+  }
 }
 
 module.exports = {
-  businessMessageHandler,
+  postbusinessMessageHandler,
+  deletebusinessMessageHandler,
+  replybusinessMessageHandler,
+  getbusinessMessageHandler,
 };

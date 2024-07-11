@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const BusinessChat = sequelize.define("BusinessChat", {
+  const BusinessChat = sequelize.define('BusinessChat', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Profile ID cannot be null",
+          msg: 'Profile ID cannot be null',
         },
       },
       reference: {
-        model: "BusinessProfile",
-        key: "id",
+        model: 'BusinessProfile',
+        key: 'id',
       },
     },
 
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Message cannot be null",
+          msg: 'Message cannot be null',
         },
       },
     },
@@ -33,12 +33,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "User ID cannot be null",
+          msg: 'User ID cannot be null',
         },
       },
       reference: {
-        model: "NormalUser",
-        key: "id",
+        model: 'NormalUser',
+        key: 'id',
       },
     },
     reply_id: {
@@ -46,8 +46,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: null,
       reference: {
-        model: "BusinessChat",
-        key: "id",
+        model: 'BusinessChat',
+        key: 'id',
       },
     },
   });
@@ -56,17 +56,17 @@ module.exports = (sequelize, DataTypes) => {
   BusinessChat.associate = (models) => {
     // a business chat belongs to a business profile (1:M relationship)
     BusinessChat.belongsTo(models.BusinessProfile, {
-      foreignKey: "profile_id",
+      foreignKey: 'profile_id',
     });
 
     // a business chat belongs to a normal user (1:M relationship)
     BusinessChat.belongsTo(models.NormalUser, {
-      foreignKey: "user_id",
+      foreignKey: 'user_id',
     });
 
     // a business chat belongs to a business chat (1:M relationship)
     BusinessChat.belongsTo(models.BusinessChat, {
-      foreignKey: "reply_id",
+      foreignKey: 'reply_id',
     });
   };
 
