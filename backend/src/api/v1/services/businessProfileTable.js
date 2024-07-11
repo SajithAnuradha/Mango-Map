@@ -1,7 +1,6 @@
-const {BusinessProfile} = require('../models');
-
+const BusinessError = require('../errors/BusinessError');
+const { BusinessProfile, BusinessUser, Location } = require('../models/index');
 // async function getBusinessProfile (business_profile_id){
-    
 
 //     try {
 
@@ -12,33 +11,29 @@ const {BusinessProfile} = require('../models');
 //         });
 //         console.log('newBusinessProfile:', newBusinessProfile);
 //         return newBusinessProfile;
-        
+
 //     } catch (error) {
 //         console.error('Error in getBusinessProfile:', error);
 //         return null;
-//     }  
+//     }
 // }
 
-async function getBusinessProfile (business_profile_id){
-    
-
-    try {
-
-        const newBusinessProfile = await BusinessProfile.findByPk(business_profile_id);
-        console.log('newBusinessProfile:', newBusinessProfile);
-        return newBusinessProfile;
-        
-    } catch (error) {
-        console.error('Error in getBusinessProfile:', error);
-        return null;
-    }  
+async function getBusinessProfile(business_profile_id) {
+  try {
+    const newBusinessProfile = await BusinessProfile.findByPk(
+      business_profile_id
+    );
+    console.log('newBusinessProfile:', newBusinessProfile);
+    return newBusinessProfile;
+  } catch (error) {
+    console.error('Error in getBusinessProfile:', error);
+    return null;
+  }
 }
 
 module.exports = {
-    getBusinessProfile
+  getBusinessProfile,
 };
-const BusinessError = require('../errors/BusinessError');
-const { BusinessProfile, BusinessUser, Location } = require('../models/index');
 
 async function updateBusinessProfile(profileId, businessProfileData) {
   // first check if the location exists

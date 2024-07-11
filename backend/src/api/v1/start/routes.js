@@ -4,7 +4,7 @@ const BusinessProfileRouter = require('../routes/businessProfile.route');
 const NotificationRouter = require('../routes/notification.route');
 const AuthRouter = require('../routes/auth.routes');
 const BusinessRouter = require('../routes/business.routes');
-const BusinessProfileRouter = require('../routes/businessprofile.routes');
+const ProfileRouter = require('../routes/profile.routes');
 
 module.exports = (app) => {
   app.use('/api/v1/register', RegisterRouter);
