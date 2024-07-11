@@ -2,7 +2,11 @@ name: flutter_application_1
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
+<<<<<<< HEAD
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+=======
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+>>>>>>> 29f10dfee4b575cfcdaae713ee1d99427a1b3851
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +23,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
+<<<<<<< HEAD
   sdk: '>=3.4.1 <4.0.0'
+=======
+  sdk: ">=3.4.1 <4.0.0"
+>>>>>>> 29f10dfee4b575cfcdaae713ee1d99427a1b3851
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,6 +38,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
   image_picker: ^1.1.2
 
 
@@ -39,6 +48,19 @@ dependencies:
   google_maps_flutter: ^2.7.0
   google_maps_flutter_platform_interface: ^2.8.0
   google_maps_flutter_ios: ^2.8.0
+=======
+  font_awesome_flutter: ^10.1.0
+  image_picker: ^1.1.2
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.2.1
+
+  flutter_staggered_grid_view: ^0.6.1
+  google_maps_flutter: ^2.7.0
+  google_maps_flutter_platform_interface: ^2.8.0
+  google_maps_flutter_ios: ^2.10.0
+>>>>>>> 29f10dfee4b575cfcdaae713ee1d99427a1b3851
   google_maps_flutter_web: ^0.5.8
   geocoding: ^3.0.0
 
@@ -58,16 +80,24 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29f10dfee4b575cfcdaae713ee1d99427a1b3851
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+<<<<<<< HEAD
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+=======
+  assets:
+    - assets/
+>>>>>>> 29f10dfee4b575cfcdaae713ee1d99427a1b3851
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
