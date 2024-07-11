@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class CompanyLogin extends StatefulWidget {
   const CompanyLogin({Key? key}) : super(key: key);
@@ -47,6 +49,44 @@ class _CompanyLogin extends State<CompanyLogin> {
         _storedCompanyName = null;
       }
     });
+    if (_storedCompanyName != null && _storedCompanyPassword != null) {
+      fetchData();
+    }
+  }
+
+  Future<void> fetchData() async {
+    // APi for verify the company login with the backend
+    final url = Uri.parse('https://dummy.restapiexample.com/api/v1/create');
+
+    Map<String, dynamic> data = {
+      // this data is for sample. this should be password and username
+      "status": "success",
+      "data": {"name": "test", "salary": "123", "age": "23", "id": 25}
+    };
+
+    try {
+      final response = await http.post(
+        url,
+        body: jsonEncode(data), // for post request
+        headers: {"Content-Type": "application/json"},
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+
+        print(data);
+        // route to the main dashboard if success
+        // after successful login, user should route to relavent page
+        // if not valid login
+        //  _companyNameError = "Invalid company. Try again !";
+        // _storedCompanyName = null;
+        // _companyPasswordError = "Invalid password. Try again !";
+        // _storedCompanyPassword = null;
+      } else {
+        print('Error: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error fetching data: $error');
+    }
   }
 
   @override
