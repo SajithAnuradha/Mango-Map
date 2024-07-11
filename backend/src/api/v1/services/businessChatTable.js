@@ -11,9 +11,20 @@ async function postBusinessMessage(profileId, message, userId) {
 }
 
 async function deleteBusinessMessage(UserId, chatId) {
-  const chat = await BusinessChat.findByPk(chatId);
-  
-  if (chat.user_id == UserId) {
+  try {
+    const chat = await BusinessChat.findByPk(chatId);
+
+    if (!chat) {
+      return { success: false, message: 'Chat not found' };
+    }
+
+    if (chat.user_id != UserId) {
+      return {
+        success: false,
+        message: 'Unauthorized: User ID does not match',
+      };
+    }
+
     if (chat.reply_id) {
       const replyChat = await BusinessChat.findByPk(chat.reply_id);
       await replyChat.destroy();
@@ -27,22 +38,26 @@ async function deleteBusinessMessage(UserId, chatId) {
       chatMessage,
       replyMessage,
     };
-  } else {
+  } catch {
     return false;
   }
 }
 
 async function replychat(previouschatId, newchatId) {
   const previousChat = await BusinessChat.findByPk(previouschatId);
-  console.log('previousChat', previousChat);
-  // update the previouschat
-  if (!previousChat) {
-    return { error: 'Previous chat not found', status: 404 };
-  }
 
-  // Update the previous chat's 'replyTo' field or any other necessary fields
+  if (!previousChat) {
+    return { success: false, message: 'Previous chat not found' };
+  }
+  console.log('DDFDF');
+  // Update the previous chat's 'reply_id' field with the new chat ID
   await previousChat.update({ reply_id: newchatId });
-  return previousChat;
+
+  return {
+    success: true,
+    message: 'Reply chat linked successfully',
+    updatedChat: previousChat,
+  };
 }
 
 async function getBusinessMessage(profileId) {
@@ -53,7 +68,6 @@ async function getBusinessMessage(profileId) {
     },
   });
 
-  console.log('length', businessChats.length);
   if (businessChats.length === 0) {
     return false;
   } else {

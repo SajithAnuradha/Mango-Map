@@ -57,7 +57,7 @@ async function deletebusinessMessageHandler(req, res) {
     if (!chat) {
       res.status(400).json({ error: 'userId, chatId Invalid' });
     }
-    res.status(200).json({ message: 'successfuly deleted', data: chat });
+    res.status(200).json({ message: 'successful delete process', data: chat });
   } catch (error) {
     res.status(400).json({ error: 'userId, chatId are required' });
   }
@@ -67,13 +67,13 @@ async function replybusinessMessageHandler(req, res) {
   const { profileId, message, userId, chatId } = req.body;
   try {
     const newChat = await postBusinessMessage(profileId, message, userId);
-    // console.log('newChat', newChat);
+
     const reply = replychat(chatId, newChat.id);
-    console.log('reply', reply);
+
     if (!reply) {
       res.status(400).json({ error: 'userId, chatId Invalid' });
     }
-    res.status(200).json({ message: 'successfully added' });
+    res.status(200).json({ message: 'successfull add process', data: reply });
   } catch (error) {
     res.status(400).json({ error: error });
   }
