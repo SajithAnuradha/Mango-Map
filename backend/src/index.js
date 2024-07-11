@@ -25,16 +25,13 @@ app.use('/api', limiter);
 require('./api/v1/start/swagger')(app);
 app.use(hpp());
 app.use(helmet());
-
 require('./api/v1/start/routes')(app);
 // demo only
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the backend!' });
 });
-
 // habdle the errors that are thrown by the application
 app.use(globalErrorHandler);
-
 db.sequelize.sync().then(() => {
   console.log('[DATABASE] Database connected');
 

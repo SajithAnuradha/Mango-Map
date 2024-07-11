@@ -1,3 +1,4 @@
+const { access } = require('fs');
 const jwt = require('jsonwebtoken');
 
 async function authorize(req, res, next) {
@@ -12,7 +13,7 @@ async function authorize(req, res, next) {
     req.user = decoded;
     next();
   } catch (ex) {
-    res.status(400).json({ error: 'Invalid token' });
+    return res.status(401).json({ error: 'Invalid token' });
   }
 }
 

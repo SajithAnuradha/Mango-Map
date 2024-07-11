@@ -15,6 +15,7 @@
   1. Profile Image Change - **api/v1/profile/normal/{id}/image** - PUT
   2. Profile Update - **api/v1/profile/normal/{id}** - PUT
   3. Delete Profile - **api/v1/profile/normal/{id}** - DELETE
+  4. Get Normal User Profile - **api/v1/profile/normal/{id}** - GET
 
 - Location Basedc Images
 

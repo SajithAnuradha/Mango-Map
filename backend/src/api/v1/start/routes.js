@@ -11,8 +11,8 @@ module.exports = (app) => {
   app.use('/api/v1/auth', AuthRouter);
   app.use('/api/v1/businessProfile', BusinessProfileRouter);
   app.use('/api/v1/notification', NotificationRouter);
-  app.use('/api/v1/profile', ProfileRouter);
   app.use('/api/v1/location', LocationRouter);
   app.use('/api/v1/business', BusinessRouter);
+  app.use('/api/v1/profile/normal', ProfileRouter);
   app.use('/api/v1/profile/business', BusinessProfileRouter);
 };

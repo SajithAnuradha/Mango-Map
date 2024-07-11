@@ -7,6 +7,7 @@ const {
 const UserError = require('../errors/UserError');
 const { comparePassword } = require('../util/password');
 const { generateProfileToken } = require('../util/profileToken');
+const { generateJsonWebToken } = require('../util/jwt');
 
 /**
  * @swagger
@@ -93,7 +94,7 @@ async function userLoginHandler(req, res) {
   // else generate a jwt token and return to the user based on normal and business user
   const id =
     user.type === 'normal' ? user.normal_user_id : user.business_user_id;
-  const token = generateProfileToken({
+  const token = generateJsonWebToken({
     id: id,
     type: user.type,
     username: user.username,
