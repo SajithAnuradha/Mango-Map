@@ -1,6 +1,7 @@
 const {LocationBasedImage}=require('../models');
 const {LocationBasedImageLike}=require('../models');
 const { uploadFileToBlob } = require('../util/azurePhotoUpload');
+const { Sequelize, Op } = require('sequelize');
 
 //This is working
 async function getimages (req,res){
@@ -155,5 +156,38 @@ async function unlikeimage (req,res){
 
 }
 
+async function alltrendingimages(req, res) {
+    console.log("working");
+    try {
+      // Step 1: Get the top 10 image IDs with the most likes
+      const topLikedImages = await LocationBasedImageLike.findAll({
+        attributes: [
+          'image_id',
+          [Sequelize.fn('COUNT', Sequelize.col('image_id')), 'like_count']
+        ],
+        group: ['image_id'],
+        order: [[Sequelize.literal('like_count'), 'DESC']],
+        limit: 10,
+        raw: true
+      });
+  
+      const topImageIds = topLikedImages.map(image => image.image_id);
+  
+      // Step 2: Get the location_id for these top images
+      const imagesWithLocations = await LocationBasedImage.findAll({
+        attributes: ['id', 'location_id'],
+        where: {
+          id: topImageIds
+        },
+        raw: true
+      });
+  
+      res.status(200).json(imagesWithLocations);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  }
 
-module.exports = {  uploadimages, getimages, getTrendingImages, getimage, deleteimage, likeimage, unlikeimage }
+
+module.exports = {  uploadimages, getimages, getTrendingImages, getimage, deleteimage, likeimage, unlikeimage,alltrendingimages }

@@ -1,5 +1,5 @@
 const express = require('express');
-const {uploadimages, getimages, getTrendingImages, getimage, deleteimage, likeimage, unlikeimage } = require('../controllers/location.controller');
+const {uploadimages, getimages, getTrendingImages, getimage, deleteimage, likeimage, unlikeimage,alltrendingimages } = require('../controllers/location.controller');
 const router = express.Router();
 const multer = require('multer');
 const fileUpload = multer();
@@ -14,6 +14,8 @@ router.post('/', fileUpload.single('file'),uploadimages);
 router.get('/',getimages );
 //get trending images
 router.get('/trending',getTrendingImages);
+
+router.get('/alltrending',alltrendingimages)
 //get images by id
 router.get('/:id',getimage );
 
@@ -25,5 +27,7 @@ router.post('/:id/like',likeimage);
 
 //remove like from images by id
 router.delete('/:id/unlike',unlikeimage);
+
+
 
 module.exports = router;
