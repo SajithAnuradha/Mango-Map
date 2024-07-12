@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Others/search_result.dart';
+import 'package:flutter_application_1/pages/Others/setting.dart';
 import 'utils/mongo_theme.dart';
 // import 'pages/Others/setting.dart';
 
@@ -13,11 +13,11 @@ class MongoMap extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final theme = MongoMapTheme.light();
+    final theme = MongoMapTheme.dark();
     return MaterialApp(
       theme: theme,
       title: 'MongoMap App',
-      home: SearchResultsScreen()
+      home: const Setting(title: 'setting')
     );
   }
 }
