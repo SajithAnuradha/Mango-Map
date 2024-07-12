@@ -100,8 +100,8 @@ class SearchResultsScreen extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            margin: const EdgeInsets.only(left: 12.0, top: 10),
-            padding: const EdgeInsets.all(4.0),
+            margin: const EdgeInsets.only(left: 12.0, top: 8),
+            padding: const EdgeInsets.all(2.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30.0),
@@ -120,15 +120,22 @@ class SearchResultsScreen extends StatelessWidget {
                 hintText: 'lakesides switzerland',
                 hintStyle: TextStyle(),
                 border: InputBorder.none, // No border
+                suffixIcon: Icon(Icons.search, color: Colors.blue),
                 contentPadding:
-                    EdgeInsets.only(left: 16.0), // Padding inside the TextField
+                    EdgeInsets.only(left: 16.0,
+                    top: 14),// Padding inside the TextField
+                
               ),
+              
             ),
+        
           ),
         ),
         const SizedBox(
             width: 8.0), // Space between the search box and the trending icon
         Container(
+          margin: const EdgeInsets.only( top: 8),
+
           decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
@@ -141,8 +148,8 @@ class SearchResultsScreen extends StatelessWidget {
               ),
             ],
           ),
-          padding:
-              const EdgeInsets.all(8.0), // Padding inside the rounded container
+          padding: const EdgeInsets.all(
+              12.0), // Padding inside the rounded container
           child: const Icon(Icons.local_fire_department, color: Colors.red),
         ),
       ],
