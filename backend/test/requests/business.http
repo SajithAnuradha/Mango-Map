@@ -1,0 +1,66 @@
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+
+### Get business profile
+GET {{host}}/api/v1/businessProfile?id=12
+Content-Type: application/json
+
+### Get notifications
+GET {{host}}/api/v1/notification/get_notification?id=3
+Content-Type: application/json
+
+### Delete notification
+DELETE {{host}}/api/v1/notification/delete_notification?id=2
+Content-Type: application/json
+
+### Get notifications
+GET {{host}}/api/v1/location?id=3
+Content-Type: application/json
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+
+### Register a Normal User
+GET {{host}}/api/v1/business/1/reviews {{http}}
+Content-Type: {{content-type}}
+
+### get review by ID
+GET {{host}}/api/v1/business/1/reviews/1?likes=true {{http}}
+Content-Type: {{content-type}}
+
+### like a photo
+POST {{host}}/api/v1/business/1/photos/2/like {{http}}
+Content-Type: {{content-type}}
+
+{
+    "userId": 5
+}
+
+### unlike a photo
+DELETE {{host}}/api/v1/business/1/photos/2/like {{http}}
+Content-Type: {{content-type}}
+
+{
+    "userId": 5
+}
+
+### update a review
+PUT {{host}}/api/v1/business/1/reviews/1 {{http}}
+Content-Type: {{content-type}}
+
+{
+    "rating": 4,
+    "content": "This is a great place to hangout with friends"
+}
+
+### delete a review
+DELETE {{host}}/api/v1/business/1/reviews/18 {{http}}
+Content-Type: {{content-type}}
+
+
+### get photo likes
+GET {{host}}/api/v1/business/1/photos/2/likes {{http}}
+Content-Type: {{content-type}}

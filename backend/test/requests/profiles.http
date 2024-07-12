@@ -1,0 +1,44 @@
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+
+### Register a Normal User
+GET {{host}}/api/v1/profile/business {{http}}
+Content-Type: {{content-type}}
+
+### get profile by ID
+GET {{host}}/api/v1/profile/business/13 {{http}}
+Content-Type: {{content-type}}
+
+### delete a business user
+DELETE {{host}}/api/v1/profile/business/14 {{http}}
+Content-Type: {{content-type}}
+
+### get the annoucements
+GET {{host}}/api/v1/profile/business/1/announcements {{http}}
+Content-Type: {{content-type}}
+
+### get the annoucement by id
+GET {{host}}/api/v1/profile/business/1/announcements/1 {{http}}
+Content-Type: {{content-type}}
+
+
+### update the profile
+PUT {{host}}/api/v1/profile/business/5 {{http}}
+Content-Type: {{content-type}}
+
+{
+    "profile_name": "new name",
+    "description": "new description",
+    "location_id": 5
+}
+
+### create an annoucement
+POST {{host}}/api/v1/profile/business/1/announcements {{http}}
+Content-Type: {{content-type}}
+
+{
+    "title": "new title",
+    "description": "new description"
+}

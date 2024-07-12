@@ -14,13 +14,7 @@ class _SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      ),
+    return const Scaffold(
       body: Align(
         alignment: Alignment.centerLeft,
         child: SingleChildScrollView(
