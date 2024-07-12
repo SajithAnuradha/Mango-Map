@@ -26,16 +26,19 @@ class _MapScreenState extends State<MapScreen> {
     String searchAddress = searchController.text;
     if (searchAddress.isNotEmpty) {
       setState(() {
-        _showSearchResult = true;
+        // _showSearchResult = true;
+        // navigate to the search results screen
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => SearchResultsScreen()));
       });
     }
-    List<Location> locations = await locationFromAddress(searchAddress);
-    if (locations.isNotEmpty) {
-      Location location = locations.first;
-      _searchPosition = LatLng(location.latitude, location.longitude);
-      mapController?.animateCamera(CameraUpdate.newLatLng(_searchPosition));
-      setState(() {});
-    }
+    // List<Location> locations = await locationFromAddress(searchAddress);
+    // if (locations.isNotEmpty) {
+    //   Location location = locations.first;
+    //   _searchPosition = LatLng(location.latitude, location.longitude);
+    //   mapController?.animateCamera(CameraUpdate.newLatLng(_searchPosition));
+    //   setState(() {});
+    // }
   }
 
   void _toggleTrending() {
