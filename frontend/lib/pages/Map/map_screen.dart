@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/SearchResults/SearchResults.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'trending_screen.dart';
@@ -15,6 +16,7 @@ class _MapScreenState extends State<MapScreen> {
   LatLng _searchPosition = LatLng(6.9271, 79.8612);
 
   bool _showTrending = false;
+  bool _showSearchResult = false;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -22,6 +24,11 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _searchLocation() async {
     String searchAddress = searchController.text;
+    if (searchAddress.isNotEmpty) {
+      setState(() {
+        _showSearchResult = true;
+      });
+    }
     List<Location> locations = await locationFromAddress(searchAddress);
     if (locations.isNotEmpty) {
       Location location = locations.first;
@@ -95,6 +102,13 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
           ),
+          if (_showSearchResult)
+            Positioned(
+              top: 100.0,
+              left: 20,
+              right: 20,
+              child: SearchResultsScreen(),
+            ),
           if (_showTrending)
             Positioned(
               top: 100.0,

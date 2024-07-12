@@ -112,6 +112,7 @@ import 'package:flutter_application_1/pages/home.dart';
 import 'addPhotoQR.dart';
 import 'addPhotoDefault.dart';
 import 'package:flutter_application_1/pages/map/map_screen.dart';
+import 'package:flutter_application_1/pages/SearchResults/SearchResults.dart';
 
 class Addphotohome extends StatefulWidget {
   const Addphotohome({super.key});
@@ -129,6 +130,7 @@ class _AddphotohomeState extends State<Addphotohome> {
     Placeholder(), // Replace Placeholder with your Map page implementation
     Explore(), // Add your Explore page implementation here
     MapScreen(), // Replace Placeholder with your Map page implementation
+    SearchResultsScreen(), // Add your Search result page implementation here
   ];
 
   void _onItemTapped(int index) {
@@ -166,6 +168,10 @@ class _AddphotohomeState extends State<Addphotohome> {
             IconButton(
               icon: Icon(Icons.map),
               onPressed: () => _onItemTapped(3),
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () => _onItemTapped(4),
             ),
           ],
         ),
