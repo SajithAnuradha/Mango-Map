@@ -16,6 +16,15 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class Explore extends StatelessWidget {
   final List<String> imagePaths = [
+    'assets/lake2.jpeg',
+    'assets/lake3.jpeg',
+    'assets/lake4.jpeg',
+    'assets/lake5.jpeg',
+    'assets/lake6.jpeg',
+    'assets/lake7.jpeg',
+    'assets/lake8.jpeg',
+    'assets/lake9.jpeg',
+    'assets/lake10.jpeg',
     'assets/image1.jpeg',
     'assets/image2.jpeg',
     'assets/image1.png',
