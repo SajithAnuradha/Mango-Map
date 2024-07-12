@@ -95,7 +95,7 @@ class _SettingState extends State<Setting> {
 }
 
 class SearchCard extends StatelessWidget {
-  const SearchCard({Key? key}) : super(key: key);
+  const SearchCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +112,7 @@ class SearchCard extends StatelessWidget {
 }
 
 class SectionCard extends StatelessWidget {
-  const SectionCard({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const SectionCard({super.key, required this.title, required this.children});
 
   final String title;
   final List<Widget> children;
@@ -141,8 +140,7 @@ class SectionCard extends StatelessWidget {
 }
 
 class SettingListTile extends StatelessWidget {
-  const SettingListTile({Key? key, required this.icon, required this.text})
-      : super(key: key);
+  const SettingListTile({super.key, required this.icon, required this.text});
 
   final IconData icon;
   final String text;
