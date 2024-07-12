@@ -20,8 +20,8 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.only(
-            left: 0,
-            right: 0,
+            left: 5,
+            right: 5,
             top: 0,
             bottom: 0,
           ),
@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const Setting(title: 'Settings')));
+                                      const Setting(title: 'Settings and activity')));
                         },
                         child: Image.asset(
                           "assets/profile.png",

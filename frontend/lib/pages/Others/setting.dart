@@ -14,13 +14,18 @@ class _SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
       body: Align(
         alignment: Alignment.centerLeft,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 10.0),
               SearchCard(
                 onChanged: (value) {
                   setState(() {
@@ -103,13 +108,13 @@ class _SettingState extends State<Setting> {
                 title: '',
                 children: [
                   ListTile(
-                    title: const Text('Log in'),
+                    title: Text('Log in'),
                     onTap: () {
                       // Handle tile tap
                     },
                   ),
                   ListTile(
-                    title: const Text(
+                    title: Text(
                       'Log out',
                       style: TextStyle(color: Color.fromARGB(255, 201, 58, 48)),
                     ),

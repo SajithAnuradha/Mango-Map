@@ -80,11 +80,10 @@ class SearchResultsScreen extends StatelessWidget {
                     ),
                     // Explore(),
                     Padding(
-                      padding: const EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: _buildImageRow(context),
                     ),
-                    // _buildImageRow(context), // Corrected method name
-                    const SizedBox(height: 8.0), // Corrected height
+                    const SizedBox(height: 8.0), 
                   ],
                 ),
               ),
@@ -132,7 +131,7 @@ class SearchResultsScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(
-            width: 8.0), // Space between the search box and the trending icon
+            width: 5.0), // Space between the search box and the trending icon
         Container(
           margin: const EdgeInsets.only( top: 8),
 

@@ -16,6 +16,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class Explore extends StatelessWidget {
   final List<String> imagePaths = [
+    'assets/image1.jpeg',
+    'assets/image2.jpeg',
     'assets/image1.png',
     'assets/image2.png',
     'assets/image3.png',
@@ -45,7 +47,13 @@ class Explore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Explore'),
+        title: const Text('Explore',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: Padding(
