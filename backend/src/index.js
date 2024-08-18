@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('express-async-errors');
 require('dotenv').config();
 const hpp = require('hpp');
@@ -19,6 +20,7 @@ process.on('uncaughtException', (ex) => {
 });
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use('/api', limiter);

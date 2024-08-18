@@ -7,7 +7,6 @@ function validateNormalUser(data) {
     username: Joi.string().max(255).required(),
     password: Joi.string().max(50).required(),
     email: Joi.string().email().required(),
-    birthday: Joi.date().max('now').required(),
   });
 
   return schema.validate(data);

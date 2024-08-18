@@ -21,22 +21,12 @@ class _SettingState extends State<Setting> {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 10.0),
-              SearchCard(
-                onChanged: (value) {
-                  setState(() {
-                    searchText = value;
-                  });
-                },
-              ),
               SectionCard(
                 title: 'Your Account',
                 children: [
                   SettingListTile(
                     icon: Icons.person_outlined,
                     text: 'Your personal details, security',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                 ],
               ),
@@ -46,37 +36,22 @@ class _SettingState extends State<Setting> {
                   SettingListTile(
                     icon: Icons.saved_search_rounded,
                     text: 'Saved',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   SettingListTile(
                     icon: Icons.place_outlined,
                     text: 'Your Places',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   SettingListTile(
                     icon: Icons.notifications_outlined,
                     text: 'Notifications',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   SettingListTile(
                     icon: Icons.reviews_outlined,
                     text: 'Your Reviews',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   SettingListTile(
                     icon: Icons.payment,
                     text: 'Payments',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                 ],
               ),
@@ -86,16 +61,10 @@ class _SettingState extends State<Setting> {
                   SettingListTile(
                     icon: Icons.account_box_outlined,
                     text: 'Account Type',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   SettingListTile(
                     icon: Icons.verified_outlined,
                     text: 'Verified',
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                 ],
               ),
@@ -104,18 +73,12 @@ class _SettingState extends State<Setting> {
                 children: [
                   ListTile(
                     title: const Text('Log in'),
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                   ListTile(
                     title: const Text(
                       'Log out',
                       style: TextStyle(color: Color.fromARGB(255, 201, 58, 48)),
                     ),
-                    onTap: () {
-                      // Handle tile tap
-                    },
                   ),
                 ],
               ),
