@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/Location/Location.dart';
+// import 'package:flutter_application_1/pages/home.dart';
 import 'pages/Others/others.dart';
-import 'package:flutter_application_1/pages/Explore/explore.dart';
-import 'package:flutter_application_1/pages/UserProfile/UserProfile.dart';
+// import 'package:flutter_application_1/pages/Explore/explore.dart';
+// import 'package:flutter_application_1/pages/UserProfile/UserProfile.dart';
 
 void main() {
   runApp(const MongoMap());
@@ -20,7 +21,7 @@ class MongoMap extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Userprofile(key: const Key('UserProfile')),
+      home: const Location(key: Key('Location')),
     );
   }
 }
