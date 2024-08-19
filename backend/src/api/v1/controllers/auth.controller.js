@@ -102,7 +102,7 @@ async function userLoginHandler(req, res) {
 
   return res.json({
     username: user.username,
-    user_id: id,
+    id: id,
     token: token,
   });
 }

@@ -1,11 +1,20 @@
 class User {
   final int id;
   final String userName;
+  String token = '';
 
-  const User({
+  User({
     required this.id,
     required this.userName,
   });
+
+  setToken(String token) {
+    this.token = token;
+  }
+
+  getToken() {
+    return this.token;
+  }
 
   factory User.fromJson(Map<String, dynamic> json) {
     return switch (json) {
