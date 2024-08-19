@@ -1,4 +1,6 @@
 require('dotenv').config();
+console.log(process.env.AZURE_CONNECTION_STRING);
+
 const fs = require('fs');
 const { uploadFileToBlob } = require('../src/api/v1/util/azurePhotoUpload');
 // read the .env file
@@ -33,4 +35,4 @@ function uploadPhoto(filePath) {
     return url;
   });
 } // run the function with a file path
-uploadPhoto('C:\\Users\\User\\Downloads\\network-cyberproject.drawio.pdf');
+uploadPhoto('C:\\Users\\User\\Downloads\\BitMonsters_Shavin.jpg');

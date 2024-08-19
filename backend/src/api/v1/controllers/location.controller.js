@@ -32,9 +32,9 @@ async function getimages(req, res) {
 async function uploadimages(req, res) {
   console.log(req.body);
   try {
-    const { file, location_id, user_id, review } = req.body;
+    const { location_id, user_id, review } = req.body;
     console.log(location_id);
-    const url = await uploadFileToBlob(file);
+    const url = await uploadFileToBlob(req.file);
     const image = await LocationBasedImage.create({
       photo: url,
       location_id: location_id,

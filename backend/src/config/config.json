@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "Sha2002@vin",
-    "database": "mango_map",
-    "host": "127.0.0.1",
+    "username": "avnadmin",
+    "password": "AVNS_GGmu8CG6UIuyYSzNyfc",
+    "database": "mangomap",
+    "host": "mangomap-sajithanuradha860-1aa1.b.aivencloud.com",
+    "port": 16493,
     "dialect": "mysql"
   },
   "test": {
