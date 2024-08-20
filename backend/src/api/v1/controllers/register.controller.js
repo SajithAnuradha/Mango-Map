@@ -69,8 +69,10 @@ async function registerNormalUserHandler(req, res) {
  */
 async function registerBusinessUserHandler(req, res) {
   // parse the body of the request through the validation
+
   const { error } = validateBusinessUser(req.body);
   if (error) {
+    console.log(error);
     return res.status(400).json({ error: error.details[0].message });
   }
 

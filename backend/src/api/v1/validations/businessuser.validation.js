@@ -8,11 +8,11 @@ function validateBusinessUser(data) {
     email: Joi.string().email().required(),
     longitude: Joi.number().max(10),
     latitude: Joi.number().max(10),
-    placeId: Joi.number().max(10),
+    placeId: Joi.string().max(255),
     address: Joi.string().max(255),
     city: Joi.string().max(50),
     state: Joi.string().max(50),
-    counrty: Joi.string().max(30),
+    country: Joi.string().max(30),
     postalCode: Joi.number().max(10),
     additionalInfo: Joi.string().max(255),
   });

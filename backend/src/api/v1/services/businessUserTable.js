@@ -22,14 +22,16 @@ async function registerBusinessUser(data) {
     postal_code: data.postalCode,
     additional_info: data.additionalInfo,
   });
+  console.log(newBusinessLocation.id);
 
   const newBusinessProfile = await BusinessProfile.create({
     profile_name: data.businessName,
     description: data.description,
     profile_token: generateProfileToken(),
-    otp: 'no data', // should fill this field. required for otp
+    otp: 123, // should fill this field. required for otp
     location_id: newBusinessLocation.id,
   });
+  console.log(newBusinessProfile.id);
 
   // then create businessuser using business profile
   const newBusinessUser = await BusinessUser.create({
