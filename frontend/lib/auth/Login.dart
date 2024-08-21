@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'CategorySelector.dart';
 import 'UserSignUp.dart';
@@ -32,16 +31,17 @@ class Login extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ),
-                        MaterialApp(
-                          initialRoute: '/',
-                          routes: {
-                            '/': (context) => CategorySelector(),
-                            '/userLogin': (context) => UserLogIn(),
-                            '/userSignup': (context) => UserSignUp(),
-                            '/companyLogin': (context) => CompanyLogin(),
-                            '/companySignup': (contxet) => CompanysignUp()
-                          },
-                        )
+                        const CategorySelector(),
+                        // MaterialApp(
+                        //   initialRoute: '/',
+                        //   routes: {
+                        //     '/': (context) => CategorySelector(),
+                        //     '/userLogin': (context) => UserLogIn(),
+                        //     '/userSignup': (context) => UserSignUp(),
+                        //     '/companyLogin': (context) => const CompanyLogin(),
+                        //     '/companySignup': (contxet) => CompanysignUp(),
+                        //   },
+                        // )
                         // UserLogIn(),
                         // CompanyLogin(),
                         // UserSignUp(),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 // import '../../../widgets/features/pickImage.dart';
@@ -14,12 +15,16 @@ class _AddphotodefaultState extends State<Addphotodefault> {
   int _rating = 0;
   final TextEditingController _visitController = TextEditingController();
   File? _image;
+  String? _imageUrl;
   final picker = ImagePicker();
 
   Future getImage() async {
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedImage != null) {
+        if (kIsWeb) {
+          _imageUrl = pickedImage.path;
+        }
         _image = File(pickedImage.path);
       } else {
         print("No Image is Picked");

@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "avnadmin",
+    "password": "AVNS_GGmu8CG6UIuyYSzNyfc",
+    "database": "mangomap",
+    "host": "mangomap-sajithanuradha860-1aa1.b.aivencloud.com",
+    "port": 16493,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Location/Location.dart';
+import 'package:flutter_application_1/pages/Profile/UserProfile.dart';
 
 class Post extends StatefulWidget {
   final String profilePic;
@@ -33,6 +35,16 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
+  void _goToUserProfile() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Userprofile()));
+  }
+
+  void _goToLocationPage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Location()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,12 +67,15 @@ class _PostState extends State<Post> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    widget.profilePic,
-                    width: 30,
-                    height: 30,
+                GestureDetector(
+                  onTap: _goToUserProfile,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      widget.profilePic,
+                      width: 30,
+                      height: 30,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -159,93 +174,96 @@ class _PostState extends State<Post> {
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  right: 8.0, left: 16, top: 8, bottom: 0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
-                  widget.placeImage,
-                  width: 80,
-                  height: 80,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
+        GestureDetector(
+          onTap: _goToLocationPage,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
                 padding: const EdgeInsets.only(
-                    left: 8.0, right: 8, top: 8, bottom: 8),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${widget.placeName} , ",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            decoration: TextDecoration.none,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          widget.countryName,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            decoration: TextDecoration.none,
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Row(
-                          children: [
-                            ...List.generate(
-                              widget.starsCount,
-                              (index) => const Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 15,
-                              ),
-                            ),
-                            ...List.generate(
-                              5 - widget.starsCount,
-                              (index) => const Icon(
-                                Icons.star,
-                                color: Colors.grey,
-                                size: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Text(
-                      widget.description,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
-                        decoration: TextDecoration.none,
-                        color: Colors.black,
-                      ),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                    right: 8.0, left: 16, top: 8, bottom: 0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    widget.placeImage,
+                    width: 80,
+                    height: 80,
+                  ),
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8, top: 8, bottom: 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${widget.placeName} , ",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              decoration: TextDecoration.none,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            widget.countryName,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              decoration: TextDecoration.none,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Row(
+                            children: [
+                              ...List.generate(
+                                widget.starsCount,
+                                (index) => const Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 15,
+                                ),
+                              ),
+                              ...List.generate(
+                                5 - widget.starsCount,
+                                (index) => const Icon(
+                                  Icons.star,
+                                  color: Colors.grey,
+                                  size: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        widget.description,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
+                          color: Colors.black,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
         const SizedBox(
           height: 25,

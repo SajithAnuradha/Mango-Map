@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/auth/CompanyLogin.dart';
+import 'package:flutter_application_1/pages/home.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'UserLogin.dart';
 
 class CategorySelector extends StatefulWidget {
   const CategorySelector({Key? key}) : super(key: key);
@@ -16,18 +19,20 @@ class _Categoryselector extends State<CategorySelector> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 150),
+          const SizedBox(height: 150),
           CustomButton(
             text: 'User',
             onPressed: () {
-              Navigator.pushNamed(context, '/userLogin');
+              // Navigator.pushNamed(context, '/userLogin');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserLogIn()));
             },
           ),
-          Row(
+          const Row(
             children: <Widget>[
               Expanded(child: Divider(color: Colors.black)),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   'or',
                   style: TextStyle(
@@ -41,11 +46,14 @@ class _Categoryselector extends State<CategorySelector> {
               Expanded(child: Divider(color: Colors.black)),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CustomButton(
             text: 'Company',
             onPressed: () {
-              Navigator.pushNamed(context, '/companyLogin');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CompanyLogin()));
             },
           ),
         ],

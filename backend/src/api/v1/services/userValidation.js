@@ -1,27 +1,14 @@
 const { UserAuth } = require('../models');
-const { comparePassword } = require('../util/password');
 
-async function userValidation(data) {
-  try {
-    const user = await UserAuth.findOne({
-      where: {
-        username: data.username,
-      },
-    });
-    if (user == null) {
-      // There is no any user matched with entered userName
-      // console.log('no such user in database')
-      return false;
-    } else if (!comparePassword(data.password, user.password)) {
-      // invalid pasword
-      return false;
-    } else {
-      return true;
-    }
-  } catch {
-    // console.log("error in User Authentication")
-    return false;
-  }
+async function userValidation(email) {
+  // get the business or normal user from the database
+  const user = await UserAuth.findOne({
+    where: {
+      email: email,
+    },
+  });
+
+  return user;
 }
 
 module.exports = {

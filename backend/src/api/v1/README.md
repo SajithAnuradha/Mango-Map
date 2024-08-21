@@ -2,19 +2,20 @@
 
 - Register Handling
 
-  1. Normal User Register - **api/v1/register/normal** - POST
-  2. Business User Register - **api/v1/register/business** - POST
+  1. Normal User Register - **api/v1/register/normal** - POST ----OK
+  2. Business User Register - **api/v1/register/business** - POST --------------OK (need modification)
 
 - Login
 
-  1. **api/v1/auth/login** - POST
-  2. Password Change - **api/v1/auth/change-pass/{id}** - PUT
+  1. **api/v1/auth/login** - POST -----------------------------------------------OK
+  2. Password Change - **api/v1/auth/change-pass/{id}** - PUT -------------------OK
 
 - Normal User Profile
 
-  1. Profile Image Change - **api/v1/profile/normal/{id}/image** - PUT
-  2. Profile Update - **api/v1/profile/normal/{id}** - PUT
-  3. Delete Profile - **api/v1/profile/normal/{id}** - DELETE
+  1. Profile Image Change - **api/v1/profile/normal/{id}/image** - PUT ---------------OK
+  2. Profile Update - **api/v1/profile/normal/{id}** - PUT -------------OK
+  3. Delete Profile - **api/v1/profile/normal/{id}** - DELETE ------------OK
+  4. Get Normal User Profile - **api/v1/profile/normal/{id}** - GET ----------------OK
 
 - Location Basedc Images
 
@@ -28,25 +29,28 @@
 
 - Business User Profile
 
-  1. Profile Image Change - **api/v1/profile/business/{id}/image** - PUT
-  2. Profile Update - **api/v1/profile/business/{id}** - PUT
-  3. Delete Profile - **api/v1/profile/business/{id}** - DELETE
-  4. Get Profiles - **api/v1/profile/business** - GET
-  5. Get Profile - **api/v1/profile/business/{id}** - GET
-  6. Get QR Code - **api/v1/profile/business/{id}/qr** - GET
-  7. One Time Pin - **api/v1/profile/business/{id}/pin** - GET
-  8. Announcement - **api/v1/profile/business/{id}/announcement** - POST
+  1. Profile Image Change - **api/v1/profile/business/{id}/image** - PUT ------------------OK
+  2. Profile Update - **api/v1/profile/business/{id}** - PUT ------------------------------OK
+  3. Delete Profile - **api/v1/profile/business/{id}** - DELETE ---------------------------OK
+  4. Get Profiles - **api/v1/profile/business** - GET -------------------------------------OK
+  5. Get Profile - **api/v1/profile/business/{id}** - GET ---------------------------------OK
+  6. Get QR Code - **api/v1/profile/business/{id}/qr** - GET ------------------------------OK
+  7. One Time Pin - **api/v1/profile/business/{id}/pin** - GET ----------------------------#####
+  8. Get Announcements - **api/v1/profile/business/{id}/announcements** - GET --------------OK
+  9. Get Announcement - **api/v1/profile/business/{id}/announcement/{id}** - GET -----------OK
+  10. Announcement - **api/v1/profile/business/{id}/announcement** - POST ------------------- OK
 
 - Business Photo Upload
 
   1. QR based Review - **api/v1/business/{id}/review** - POST (Include Rating, Images)
-  2. Review Delete - **api/v1/business/{id}/review/{id}** - DELETE
-  3. Photo Delete - **api/v1/business/{id}/image/{id}** - DELETE
-  4. Get Reviews - **api/v1/business/{id}/reviews** - GET
-  5. Get Review - **api/v1/business/{id}/review/{id}** - GET
-  6. Like Image - **api/v1/business/{id}/image/{id}/like** - POST
-  7. Remove Like - **api/v1/business/{id}/image/{id}/like** - DELETE
-  8. Update Review - **api/v1/business/{id}/review/{id}** - PUT
+  2. Review Delete - **api/v1/business/{id}/review/{id}** - DELETE --------------------------OK
+  3. Photo Delete - **api/v1/business/{id}/image/{id}** - DELETE ----------------------------OK
+  4. Get Reviews - **api/v1/business/{id}/reviews** - GET -----------------------------------OK
+  5. Get Review - **api/v1/business/{id}/review/{id}** - GET --------------------------------OK
+  6. Get Likes - **api/v1/business/{id}/photo/{id}/likes** - GET ----------------------------OK
+  7. Like Image - **api/v1/business/{id}/photo/{id}/like** - POST ---------------------------OK
+  8. Remove Like - **api/v1/business/{id}/photo/{id}/like** - DELETE ------------------------OK
+  9. Update Review - **api/v1/business/{id}/review/{id}** - PUT -----------------------------ISSUE
 
 - Search
 

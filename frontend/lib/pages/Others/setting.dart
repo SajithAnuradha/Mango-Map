@@ -10,21 +10,17 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  late String searchText = '';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      ),
-      body: const Align(
+    return const Scaffold(
+      body: Align(
         alignment: Alignment.centerLeft,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SearchCard(),
+              const SizedBox(height: 10.0),
               SectionCard(
                 title: 'Your Account',
                 children: [
@@ -76,10 +72,10 @@ class _SettingState extends State<Setting> {
                 title: '',
                 children: [
                   ListTile(
-                    title: Text('Log in'),
+                    title: const Text('Log in'),
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       'Log out',
                       style: TextStyle(color: Color.fromARGB(255, 201, 58, 48)),
                     ),
@@ -94,17 +90,44 @@ class _SettingState extends State<Setting> {
   }
 }
 
-class SearchCard extends StatelessWidget {
-  const SearchCard({Key? key}) : super(key: key);
+class SearchCard extends StatefulWidget {
+  const SearchCard({super.key, this.onChanged});
+
+  final ValueChanged<String>? onChanged;
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _SearchCardState createState() => _SearchCardState();
+}
+
+class _SearchCardState extends State<SearchCard> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 5.0,
       child: TextField(
-        decoration: InputDecoration(
+        controller: _controller,
+        onChanged: widget.onChanged,
+        decoration: const InputDecoration(
           hintText: 'Search',
           prefixIcon: Icon(Icons.search),
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+          border: InputBorder.none,
         ),
       ),
     );
@@ -112,8 +135,7 @@ class SearchCard extends StatelessWidget {
 }
 
 class SectionCard extends StatelessWidget {
-  const SectionCard({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const SectionCard({super.key, required this.title, required this.children});
 
   final String title;
   final List<Widget> children;
@@ -130,7 +152,7 @@ class SectionCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ...children,
@@ -141,11 +163,12 @@ class SectionCard extends StatelessWidget {
 }
 
 class SettingListTile extends StatelessWidget {
-  const SettingListTile({Key? key, required this.icon, required this.text})
-      : super(key: key);
+  const SettingListTile(
+      {super.key, required this.icon, required this.text, this.onTap});
 
   final IconData icon;
   final String text;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -153,9 +176,10 @@ class SettingListTile extends StatelessWidget {
       leading: Icon(icon),
       title: Text(
         text,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.titleSmall,
       ),
       trailing: const Icon(Icons.arrow_forward_ios_rounded),
+      onTap: onTap,
     );
   }
 }

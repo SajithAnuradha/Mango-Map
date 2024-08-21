@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     // a business photo belongs to a business review (1:M relationship)
     BusinessPhoto.belongsTo(models.BusinessReview, {
       foreignKey: 'review_id',
+      onDelete: 'CASCADE',
     });
 
     // a business photo has many likes (1:M relationship)
