@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - mangomap-api
 on:
   push:
     branches:
-      - shavin/interfacing
+      - main
   workflow_dispatch:
 
 
