@@ -20,6 +20,27 @@ function validateBusinessUser(data) {
   return schema.validate(data);
 }
 
+function validateLoginBody(data) {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().max(50).required(),
+  });
+
+  return schema.validate(data);
+}
+
+function validatePasswordChangeBody(data) {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    oldPassword: Joi.string().max(50).required(),
+    newPassword: Joi.string().max(50).required(),
+  });
+
+  return schema.validate(data);
+}
+
 module.exports = {
   validateBusinessUser,
+  validateLoginBody,
+  validatePasswordChangeBody,
 };

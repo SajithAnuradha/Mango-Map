@@ -1,13 +1,11 @@
 const { BlobServiceClient } = require('@azure/storage-blob');
-const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const resizeImage = require('./resizeImage');
-
 const connStr = process.env.AZURE_CONNECTION_STRING || null;
 
 // storage account credentials
-const blobServiceClient = new BlobServiceClient(connStr);
+const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 const containerName = process.env.BLOB_CONTAINER_NAME;
 
 // resized image width and height
@@ -31,15 +29,15 @@ function getResizedBlobName(fileName, tailName) {
   );
 }
 
-function getResizedOutputFile(fileName) {
-  return (
-    path.dirname(filePath) +
-    '\\' +
-    path.basename(filePath, path.extname(filePath)) +
-    '-thumb' +
-    path.extname(filePath)
-  );
-}
+// function getResizedOutputFile(fileName) {
+//   return (
+//     path.dirname(filePath) +
+//     '\\' +
+//     path.basename(filePath, path.extname(filePath)) +
+//     '-thumb' +
+//     path.extname(filePath)
+//   );
+// }
 
 async function uploadFileToBlob(file) {
   try {

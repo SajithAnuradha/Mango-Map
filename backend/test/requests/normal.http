@@ -1,0 +1,26 @@
+@host=http://localhost:8888
+@content-type = application/json
+@http = HTTP/1.1
+
+### Login
+POST {{host}}/api/v1/auth/login {{http}}
+Content-Type: {{content-type}}
+
+{
+    "email": "shavin@gmail.com",
+    "password": "shavin"
+}
+
+### get normal users
+GET {{host}}/api/v1/profile/normal?limit=10 {{http}}
+Content-Type: {{content-type}}
+
+### get a normal user
+GET {{host}}/api/v1/profile/normal/2 {{http}}
+Content-Type: {{content-type}}
+
+
+### delete a normal user
+DELETE {{host}}/api/v1/profile/normal {{http}}
+Content-Type: {{content-type}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInR5cGUiOiJub3JtYWwiLCJ1c2VybmFtZSI6InNoYXZpbiIsImlhdCI6MTcyMDcwNDAwNywiZXhwIjoxNzIwNzkwNDA3fQ.gtKLYLT-e0PfDenZ02sZMhNYqyXP1mmvKJHr8bp_HPw

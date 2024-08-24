@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Data/post_details_data.dart';
 import 'package:flutter_application_1/model/post_data.dart';
 import 'package:flutter_application_1/widgets/post_card.dart';
+import 'package:flutter_application_1/pages/Others/setting.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -48,10 +49,20 @@ class _HomeState extends State<Home> {
                         left: 8.0, right: 16, top: 8, bottom: 0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        "assets/profile.png",
-                        width: 60,
-                        height: 60,
+                      child: GestureDetector(
+                        onTap: () {
+                          // Add your onTap logic here
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const Setting(title: 'Settings')));
+                        },
+                        child: Image.asset(
+                          "assets/profile.png",
+                          width: 60,
+                          height: 60,
+                        ),
                       ),
                     ),
                   ),

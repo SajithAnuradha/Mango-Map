@@ -23,19 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    birthday: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Birthday cannot be null',
-        },
-        isBefore: {
-          args: new Date().toISOString(),
-          msg: 'Birthday must be before today',
-        },
-      },
-    },
 
     profile_image: {
       type: DataTypes.STRING(512),

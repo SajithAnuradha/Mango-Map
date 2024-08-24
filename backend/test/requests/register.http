@@ -12,8 +12,7 @@ Content-Type: application/json
     "username": "shavin",
     "password": "shavin",
     "firstName": "Shavin",
-    "lastName": "Anjitha",
-    "birthday": "2002-01-11"
+    "lastName": "Anjitha"
 }
 
 
