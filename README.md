@@ -2,7 +2,8 @@
 
 ## UI Design
 ![alt text](MangoMap.jpg)
-figma-<link>https://www.google.com/url?q=https://www.figma.com/design/mW5OVHHLBetbjiNTLQZSQg/Mango-Map?node-id%3D0-1%26t%3Dghob4WadViaIgTDw-1&sa=D&source=calendar&usd=2&usg=AOvVaw1SeMCeCm_YwIUQrdn0yUwY</link>
+<a href="https://www.figma.com/design/mW5OVHHLBetbjiNTLQZSQg/Mango-Map?node-id%3D0-1%26t%3Dghob4WadViaIgTDw-1" target="_blank" rel="noopener noreferrer">Figma Design</a>
+
 
 ## Frontend
 
