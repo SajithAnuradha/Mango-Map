@@ -4,6 +4,7 @@ const { validateNormalUser } = require('../validations/normaluser.validation');
 const {
   validateBusinessUser,
 } = require('../validations/businessuser.validation');
+const { UserError } = require('../errors/UserError');
 
 /**
  * @swagger
@@ -33,7 +34,7 @@ async function registerNormalUserHandler(req, res) {
   // parse the body of the request through the validation
   const { error } = validateNormalUser(req.body);
   if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+    throw new UserError(error.details[0].message, 400);
   }
 
   // parse the request body data to register the normal user

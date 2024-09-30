@@ -12,6 +12,18 @@ function validateNormalUser(data) {
   return schema.validate(data);
 }
 
+function validateNormalUserUpdate(data) {
+  const schema = Joi.object({
+    firstName: Joi.string().max(50),
+    lastName: Joi.string().max(50),
+    username: Joi.string().max(255),
+    birthday: Joi.date(),
+  });
+
+  return schema.validate(data);
+}
+
 module.exports = {
   validateNormalUser,
+  validateNormalUserUpdate,
 };

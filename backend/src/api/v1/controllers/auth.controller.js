@@ -6,7 +6,6 @@ const {
 } = require('../validations/businessuser.validation');
 const UserError = require('../errors/UserError');
 const { comparePassword } = require('../util/password');
-const { generateProfileToken } = require('../util/profileToken');
 const { generateJsonWebToken } = require('../util/jwt');
 
 /**
@@ -76,7 +75,6 @@ async function userLoginHandler(req, res) {
   }
 
   // now get the resulted user from the database
-
   const user = await userValidation(req.body.email);
   if (!user) {
     throw new UserError('User does not exist', 404);

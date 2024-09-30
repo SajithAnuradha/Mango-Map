@@ -1,10 +1,11 @@
 const express = require('express');
 const multer = require('multer');
 const {
-  getNormalUserDetails,
+  getNormalUsers,
   deleteNormalUser,
   updateNormalUserImage,
-  getNormalUserProfiles,
+  getNormalUser,
+  getAuthenticatedUser,
   updateNormalUserProfileHandler,
 } = require('../controllers/profile.controller');
 const { authorize } = require('../middlewares/auth');
@@ -12,15 +13,16 @@ const { authorize } = require('../middlewares/auth');
 const router = express.Router();
 const fileUpload = multer();
 
-router.get('/:id', getNormalUserDetails);
-router.get('/', getNormalUserProfiles);
-router.delete('/', authorize, deleteNormalUser);
+router.get('/me', authorize, getAuthenticatedUser);
+router.delete('/me', authorize, deleteNormalUser);
 router.put(
-  '/image',
+  '/me/image',
   authorize,
   fileUpload.single('file'),
   updateNormalUserImage
 );
-router.put('/', authorize, updateNormalUserProfileHandler);
+router.put('/me', authorize, updateNormalUserProfileHandler);
+router.get('/:id', authorize, getNormalUser);
+router.get('/', authorize, getNormalUsers);
 
 module.exports = router;

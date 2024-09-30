@@ -1,15 +1,19 @@
 /* eslint-disable no-unused-vars */
 const APIError = require('../errors/APIError');
+const { UserError } = require('../errors/UserError');
 const { NormalUser, UserAuth } = require('../models');
 const {
   getNormalUserById,
   updateNormalUserProfileImage,
-  getNormalUsers,
+  fetchNormalUsers,
   updateNormalUserProfile,
 } = require('../services/normalUserTable');
 const { uploadFileToBlob } = require('../util/azurePhotoUpload');
 const { getPaginationParameters } = require('../util/pagination');
-const { validateNormalUser } = require('../validations/normaluser.validation');
+const {
+  validateNormalUser,
+  validateNormalUserUpdate,
+} = require('../validations/normaluser.validation');
 
 /**
  * @swagger
@@ -43,7 +47,7 @@ const { validateNormalUser } = require('../validations/normaluser.validation');
  *     tags:
  *       - Profile
  */
-async function getNormalUserDetails(req, res) {
+async function getNormalUser(req, res) {
   const { id } = req.params;
 
   const user = await getNormalUserById(id);
@@ -55,10 +59,17 @@ async function getNormalUserDetails(req, res) {
   }
 }
 
-async function getNormalUserProfiles(req, res) {
+async function getAuthenticatedUser(req, res) {
+  const userId = req.user.id;
+
+  const user = await getNormalUserById(userId);
+  return res.json(user);
+}
+
+async function getNormalUsers(req, res) {
   const { page, limit } = getPaginationParameters(req);
 
-  const users = await getNormalUsers(page, limit);
+  const users = await fetchNormalUsers(page, limit);
   return res.json(users);
 }
 
@@ -94,9 +105,9 @@ async function updateNormalUserImage(req, res) {
 
 async function updateNormalUserProfileHandler(req, res) {
   // first validate the request body
-  const { error } = validateNormalUser(req.body);
+  const { error } = validateNormalUserUpdate(req.body);
   if (error) {
-    throw new APIError(error.details[0].message, 400);
+    throw new UserError(error.details[0].message, 400);
   }
 
   const id = req.user.id;
@@ -106,8 +117,9 @@ async function updateNormalUserProfileHandler(req, res) {
 }
 
 module.exports = {
-  getNormalUserDetails,
-  getNormalUserProfiles,
+  getAuthenticatedUser,
+  getNormalUser,
+  getNormalUsers,
   deleteNormalUser,
   updateNormalUserImage,
   updateNormalUserProfileHandler,
