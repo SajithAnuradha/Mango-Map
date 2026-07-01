@@ -2,7 +2,7 @@
 
 ## UI Design
 ![alt text](MangoMap.jpg)
-<a href="https://www.figma.com/design/mW5OVHHLBetbjiNTLQZSQg/Mango-Map?node-id%3D0-1%26t%3Dghob4WadViaIgTDw-1" target="_blank" rel="noopener noreferrer">Figma Design</a>
+<!-- <a href="https://www.figma.com/design/mW5OVHHLBetbjiNTLQZSQg/Mango-Map?node-id%3D0-1%26t%3Dghob4WadViaIgTDw-1" target="_blank" rel="noopener noreferrer">Figma Design</a> -->
 
 
 ## Frontend
